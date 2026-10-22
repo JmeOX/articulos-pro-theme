@@ -1522,7 +1522,7 @@
         "type": "text",
         "id": "ap_trust_1_text",
         "label": "Elemento 1: texto",
-        "default": "Gratis · 3–5 días"
+        "default": "Gratis · 3–7 días"
       },
       {
         "type": "text",

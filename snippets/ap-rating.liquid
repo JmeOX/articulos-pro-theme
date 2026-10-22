@@ -1,0 +1,16 @@
+{%- comment -%}
+  ap-rating — estrellas + cantidad de reseñas bajo el título del producto.
+  Lee los metacampos estándar de reseñas de Shopify (reviews.rating / reviews.rating_count),
+  que Judge.me llena automáticamente. Sin reseñas = no se muestra.
+  Al tocarlas, baja hasta la sección de reseñas (#judgeme_product_reviews).
+{%- endcomment -%}
+{%- assign ap_r = product.metafields.reviews.rating.value -%}
+{%- assign ap_n = product.metafields.reviews.rating_count.value | default: 0 -%}
+{%- if ap_r != blank and ap_n > 0 -%}
+  {%- assign ap_val = ap_r.rating | round: 1 -%}
+  {%- assign ap_full = ap_r.rating | round -%}
+  <a class="ap-rating" href="#judgeme_product_reviews" aria-label="{{ ap_val }} de 5 estrellas, {{ ap_n }} reseñas">
+    <span class="ap-rating__stars" aria-hidden="true">{%- for i in (1..5) -%}{%- if i <= ap_full -%}★{%- else -%}☆{%- endif -%}{%- endfor -%}</span>
+    <span>{{ ap_val }} · {{ ap_n }} {% if ap_n == 1 %}reseña{% else %}reseñas{% endif %}</span>
+  </a>
+{%- endif -%}

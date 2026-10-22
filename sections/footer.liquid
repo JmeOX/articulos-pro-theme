@@ -90,6 +90,8 @@
                     {%- if block.settings.menu != blank -%}
                       <ul class="footer-block__details-content list-unstyled">
                         {%- for link in block.settings.menu.links -%}
+                          {%- comment -%} Artículos Pro: ocultar colecciones sin productos {%- endcomment -%}
+                          {%- if link.type == 'collection_link' and link.object.products_count == 0 -%}{%- continue -%}{%- endif -%}
                           <li>
                             <a
                               href="{{ link.url }}"

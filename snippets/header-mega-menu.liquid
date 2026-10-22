@@ -10,6 +10,8 @@
 <nav class="header__inline-menu">
   <ul class="list-menu list-menu--inline" role="list">
     {%- for link in section.settings.menu.links -%}
+      {%- comment -%} Artículos Pro: ocultar colecciones sin productos {%- endcomment -%}
+      {%- if link.type == 'collection_link' and link.object.products_count == 0 -%}{%- continue -%}{%- endif -%}
       <li>
         {%- if link.links != blank -%}
           <header-menu>

@@ -16,22 +16,12 @@
           "type": "title",
           "settings": {}
         },
-        "variant_picker": {
-          "type": "variant_picker",
-          "settings": {
-            "picker_type": "button",
-            "swatch_shape": "circle"
-          }
+        "ap_rating": {
+          "type": "ap_rating",
+          "settings": {}
         },
-        "buy_buttons": {
-          "type": "buy_buttons",
-          "settings": {
-            "show_dynamic_checkout": false,
-            "show_gift_card_recipient": true
-          }
-        },
-        "description": {
-          "type": "description",
+        "ap_price": {
+          "type": "ap_price",
           "settings": {}
         },
         "ap_benefits": {
@@ -46,6 +36,20 @@
           "type": "ap_pack_picker",
           "settings": {}
         },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "circle"
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": false,
+            "show_gift_card_recipient": true
+          }
+        },
         "ap_whatsapp": {
           "type": "ap_whatsapp",
           "settings": {}
@@ -54,17 +58,18 @@
           "type": "ap_trust",
           "settings": {}
         },
-        "ap_price": {
-          "type": "ap_price",
-          "settings": {}
-        },
         "ap_loop_video": {
           "type": "ap_loop_video",
+          "settings": {}
+        },
+        "description": {
+          "type": "description",
           "settings": {}
         }
       },
       "block_order": [
         "title",
+        "ap_rating",
         "ap_price",
         "ap_benefits",
         "ap_specs",
@@ -79,7 +84,7 @@
       "settings": {
         "enable_sticky_info": true,
         "color_scheme": "scheme-1",
-        "media_size": "large",
+        "media_size": "medium",
         "constrain_to_viewport": true,
         "media_fit": "contain",
         "gallery_layout": "thumbnail_slider",
@@ -92,9 +97,97 @@
         "padding_bottom": 12
       }
     },
+    "ap-how-it-works": {
+      "type": "ap-how-it-works",
+      "settings": {
+        "eyebrow": "Cómo funciona",
+        "title": "Así de fácil se usa",
+        "color_scheme": ""
+      }
+    },
+    "ap-scenarios": {
+      "type": "ap-scenarios",
+      "settings": {
+        "eyebrow": "Para qué te sirve",
+        "title": "Cuando más lo vas a necesitar",
+        "color_scheme": ""
+      }
+    },
+    "ap-videos": {
+      "type": "ap-videos",
+      "settings": {
+        "eyebrow": "Clientes reales",
+        "title": "Así lo usan en casa",
+        "tag": "CLIENTE REAL",
+        "color_scheme": ""
+      }
+    },
+    "ap-detail": {
+      "type": "ap-detail",
+      "settings": {
+        "eyebrow": "En detalle",
+        "title": "Todo lo que incluye",
+        "color_scheme": ""
+      }
+    },
+    "ap-objection": {
+      "type": "ap-objection",
+      "settings": {
+        "eyebrow": "La pregunta que más nos hacen",
+        "color_scheme": ""
+      }
+    },
+    "ap-compare": {
+      "type": "ap-compare",
+      "settings": {
+        "eyebrow": "Comparativa",
+        "title": "Compara antes de decidir",
+        "lead": "",
+        "ours_label": "",
+        "color_scheme": ""
+      }
+    },
+    "ap-backing": {
+      "type": "ap-backing",
+      "settings": {
+        "eyebrow": "Respaldo",
+        "title": "Legal y probado en Colombia",
+        "color_scheme": ""
+      }
+    },
+    "ap-warranty": {
+      "type": "ap-warranty",
+      "settings": {
+        "eyebrow": "Garantía",
+        "title": "Compra tranquilo",
+        "default_points": "Cubre defectos de fábrica;Si falla, gestionamos la devolución;No cubre daños por mal uso",
+        "link": "",
+        "color_scheme": ""
+      }
+    },
+    "ap-faq": {
+      "type": "ap-faq",
+      "settings": {
+        "eyebrow": "Preguntas frecuentes",
+        "title": "Resolvemos tus dudas",
+        "color_scheme": ""
+      }
+    },
+    "ap-final-cta": {
+      "type": "ap-final-cta",
+      "settings": {
+        "button_label": "Comprar ahora",
+        "show_sticky": true,
+        "color_scheme": ""
+      }
+    },
     "disclosures": {
       "type": "disclosures",
       "settings": {
+        "heading": "Divulgaciones",
+        "heading_size": "h2",
+        "open_by_default": false,
+        "color_scheme": "",
         "padding_top": 36,
         "padding_bottom": 0
       }
@@ -117,45 +210,25 @@
         "padding_bottom": 28
       }
     },
-    "ap-how-it-works": {
-      "type": "ap-how-it-works",
-      "settings": {}
-    },
-    "ap-scenarios": {
-      "type": "ap-scenarios",
-      "settings": {}
-    },
-    "ap-videos": {
-      "type": "ap-videos",
-      "settings": {}
-    },
-    "ap-detail": {
-      "type": "ap-detail",
-      "settings": {}
-    },
-    "ap-objection": {
-      "type": "ap-objection",
-      "settings": {}
-    },
-    "ap-compare": {
-      "type": "ap-compare",
-      "settings": {}
-    },
-    "ap-backing": {
-      "type": "ap-backing",
-      "settings": {}
-    },
-    "ap-warranty": {
-      "type": "ap-warranty",
-      "settings": {}
-    },
-    "ap-faq": {
-      "type": "ap-faq",
-      "settings": {}
-    },
-    "ap-final-cta": {
-      "type": "ap-final-cta",
-      "settings": {}
+    "17926367671ad6986b": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_review_widget_Nw6f6W": {
+          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "review_data": "sample_data",
+            "max_width": 1200,
+            "show_shop_reviews": false,
+            "empty_state": "empty_widget"
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_review_widget_Nw6f6W"
+      ],
+      "settings": {
+        "include_margins": true
+      }
     }
   },
   "order": [
@@ -168,6 +241,7 @@
     "ap-compare",
     "ap-backing",
     "ap-warranty",
+    "17926367671ad6986b",
     "ap-faq",
     "ap-final-cta",
     "disclosures",

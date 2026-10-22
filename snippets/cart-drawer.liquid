@@ -76,7 +76,7 @@
           </span>
         </button>
       </div>
-      {%- if cart != empty -%}<p class="ap-cart-ship">✓ Tu envío es <b>gratis</b> · Llega en 3 a 5 días hábiles</p>{%- endif -%}
+      {%- if cart != empty -%}<p class="ap-cart-ship">✓ Tu envío es <b>gratis</b> · Llega en 3 a 7 días hábiles</p>{%- endif -%}
       <cart-drawer-items
         view-event-payload="{{ cart | standard_event_data: 'view', context: 'dialog' | escape }}"
         view-event-trigger="manual"

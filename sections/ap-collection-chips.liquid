@@ -7,6 +7,8 @@
 <div class="page-width ap-chips-wrap">
   <nav class="ap-chips" aria-label="Colecciones">
     {%- for link in ap_menu.links -%}
+      {%- comment -%} Artículos Pro: ocultar colecciones sin productos {%- endcomment -%}
+      {%- if link.type == 'collection_link' and link.object.products_count == 0 -%}{%- continue -%}{%- endif -%}
       {%- if link.type == 'collection_link' or link.type == 'catalog_link' or link.type == 'collections_link' -%}
         <a class="ap-chip{% if link.active or link.current %} is-on{% endif %}" href="{{ link.url }}">{{ link.title }}</a>
       {%- endif -%}

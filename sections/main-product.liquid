@@ -77,7 +77,6 @@
     <div class="page-width">
       <div class="product product--{{ section.settings.media_size }} product--{{ section.settings.media_position }} product--{{ section.settings.gallery_layout }} product--mobile-{{ section.settings.mobile_thumbnails }} grid grid--1-col {% if product.media.size > 0 %}grid--2-col-tablet{% else %}product--no-media{% endif %}">
         <div class="grid__item product__media-wrapper">
-          {%- render 'ap-seal', product: product -%}
           {% render 'product-media-gallery', variant_images: variant_images %}
         </div>
         <div class="product__info-wrapper grid__item{% if settings.page_width > 1400 and section.settings.media_size == "small" %} product__info-wrapper--extra-padding{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
@@ -484,6 +483,8 @@
                     surface: 'product_page'
                   -%}
                 {%- comment -%} Bloques de Artículos Pro {%- endcomment -%}
+                {%- when 'ap_rating' -%}
+                  {% render 'ap-rating', product: product %}
                 {%- when 'ap_price' -%}
                   {% render 'ap-price', product: product, section_id: section.id %}
                 {%- when 'ap_loop_video' -%}
@@ -772,6 +773,7 @@
   "tag": "section",
   "class": "section",
   "blocks": [
+    { "type": "ap_rating", "name": "AP · Estrellas", "limit": 1 },
     { "type": "ap_price", "name": "AP · Precio", "limit": 1 },
     { "type": "ap_loop_video", "name": "AP · Video en loop", "limit": 1 },
     { "type": "ap_pack_picker", "name": "AP · Paquetes", "limit": 1 },

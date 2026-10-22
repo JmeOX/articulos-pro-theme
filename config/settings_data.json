@@ -130,6 +130,7 @@
     "cart_color_scheme": "scheme-1",
     "customer_account_menu": "customer-account-main-menu",
     "ap_whatsapp_number": "3007980459",
+    "ap_pay_addi": false,
     "sections": {
       "main-password-header": {
         "type": "main-password-header",
@@ -145,6 +146,20 @@
       }
     },
     "content_for_index": [],
+    "blocks": {
+      "14060646107696862457": {
+        "type": "shopify://apps/judge-me-reviews/blocks/judgeme_core/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+        "disabled": false,
+        "settings": {}
+      },
+      "13047258039897440615": {
+        "type": "shopify://apps/judge-me-reviews/blocks/cart_drawer_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+        "disabled": false,
+        "settings": {
+          "widget_type": "review-widget"
+        }
+      }
+    },
     "color_schemes": {
       "scheme-1": {
         "settings": {
@@ -201,7 +216,8 @@
           "shadow": "#111111"
         }
       }
-    }
+    },
+    "ap_trust_1_text": "Gratis · 3–7 días"
   },
   "presets": {
     "Dawn": {

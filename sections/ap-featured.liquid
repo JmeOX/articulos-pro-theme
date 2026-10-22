@@ -7,7 +7,7 @@
     {% render 'ap-sec-head', eyebrow: section.settings.eyebrow, title: section.settings.title %}
     <ul class="grid product-grid grid--2-col-tablet-down grid--4-col-desktop ap-featured" role="list">
       {%- for product in c.products limit: section.settings.limit -%}
-        <li class="grid__item">{% render 'card-product', card_product: product, media_aspect_ratio: 'square', image_shape: 'default', show_secondary_image: false, show_vendor: false, show_rating: false, section_id: section.id %}</li>
+        <li class="grid__item">{% render 'card-product', card_product: product, media_aspect_ratio: 'square', image_shape: 'default', show_secondary_image: false, show_vendor: false, show_rating: true, section_id: section.id %}</li>
       {%- endfor -%}
     </ul>
     {%- if section.settings.button != blank -%}<p class="ap-featured__more"><a class="ap-btn ap-btn--secondary" href="{{ section.settings.button_link | default: c.url }}">{{ section.settings.button }}</a></p>{%- endif -%}

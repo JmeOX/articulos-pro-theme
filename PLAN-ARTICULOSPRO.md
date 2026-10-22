@@ -14,8 +14,8 @@ Archivo de traspaso: si se abre una sesión nueva con Claude, empezar leyendo es
 - Estilo: estructura "ficha técnica" (títulos a la izquierda con etiqueta naranja, tablas, separadores 2px) + tarjetas radio 12px con sombra suave, botones 8px, una sola banda negra por página.
 - Colores: blanco #FFFFFF, gris cálido #F6F4F1, negro #111111, naranja #ED7A07 (texto sobre naranja siempre negro), naranja texto #A85200, naranja suave #FDEEDD. Fuente Hanken Grotesk.
 - Pagos: Mercado Pago, Addi, tarjeta, transferencia por WhatsApp. Sin contraentrega.
-- Envío siempre gratis, 3 a 5 días hábiles, guía por WhatsApp.
-- Garantía 3 meses; si falla se gestiona devolución; no cubre mal uso.
+- Envío siempre gratis, 3 a 7 días hábiles, guía por WhatsApp.
+- Garantía 3 meses; si falla se gestiona devolución; no cubre mal uso. Decisión: no se publica derecho de retracto (pendiente validar con abogado).
 - Horario: lun–vie 8 a.m.–7 p.m., sáb hasta 12 m.
 - Ofertas por cantidad = variantes "Paquete" (1/2/3 unidades). Máximo 3 por producto; en el carrito se cambia el paquete, no hay +/-.
 - Reseñas: Judge.me. Complemento sugerido en carrito: campo artpro.complemento, oculto si está vacío.

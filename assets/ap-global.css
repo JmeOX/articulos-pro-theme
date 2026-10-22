@@ -79,7 +79,7 @@
 .ap-price__save { align-self: center; background: var(--ap-orange); color: var(--ap-on-brand); font-size: 1.1rem; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.4rem 0.8rem; border-radius: var(--ap-radius-sm); }
 
 .product__media-wrapper { position: relative; }
-.ap-seal { position: absolute; z-index: 2; top: 1.4rem; left: 1.4rem; width: 92px; height: 92px; border-radius: 50%; border: 2px solid var(--ap-ink); background: var(--ap-orange); color: var(--ap-on-brand); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; font-size: 0.8rem; font-weight: 800; letter-spacing: 0.04em; line-height: 1.15; text-transform: uppercase; pointer-events: none; }
+.ap-seal { position: absolute; z-index: 10; top: 1.4rem; left: 1.4rem; width: 92px; height: 92px; border-radius: 50%; border: 2px solid var(--ap-ink); background: var(--ap-orange); color: var(--ap-on-brand); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; font-size: 0.8rem; font-weight: 800; letter-spacing: 0.04em; line-height: 1.15; text-transform: uppercase; pointer-events: none; }
 .ap-seal b { font-size: 1.5rem; letter-spacing: 0; }
 
 /* Título del producto más grande y en negrita, como el mockup */
@@ -271,11 +271,12 @@ cart-drawer .ap-cart-ship { margin-bottom: 0.8rem; }
 @media (min-width: 990px) { .ap-hero { padding-block: 5.6rem 7.2rem; } .ap-hero__in { grid-template-columns: 1fr 1.05fr; gap: 5.6rem; } .ap-hero__txt { order: -1; } }
 .ap-cats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin-top: 2.4rem; }
 .ap-cat { text-decoration: none; color: inherit; }
-.ap-cat__img { aspect-ratio: 1 / 1; border-radius: var(--ap-radius-lg); overflow: hidden; background: var(--ap-surface-alt); }
-.ap-cat__img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.ap-cat__img { aspect-ratio: 1 / 1; border-radius: var(--ap-radius-lg); overflow: hidden; background: var(--ap-surface); border: 1px solid var(--ap-line); }
+/* Imagen completa, sin recortes, centrada en el recuadro */
+.ap-cat__img img { width: 100%; height: 100%; object-fit: contain; display: block; }
 .ap-cat b { display: flex; justify-content: space-between; margin-top: 0.8rem; font-size: 1.4rem; }
 .ap-cat b::after { content: "→"; color: var(--ap-orange); }
-@media (min-width: 990px) { .ap-cats { gap: 2.4rem; } .ap-cat__img { aspect-ratio: 4 / 3; } .ap-cat b { font-size: 1.8rem; } }
+@media (min-width: 990px) { .ap-cats { gap: 2.4rem; } .ap-cat b { font-size: 1.8rem; } }
 .ap-featured { margin-top: 2.4rem; }
 .ap-featured__more { margin: 2.8rem 0 0; }
 .ap-star__in { display: grid; gap: 2.4rem; align-items: center; }
@@ -317,3 +318,22 @@ cart-drawer .ap-cart-ship { margin-bottom: 0.8rem; }
 .ap-track__note { margin: 0; font-size: 1.25rem; color: var(--ap-ink-muted); }
 /* 404 y búsqueda: títulos con el estilo de la marca */
 .template-404 .title, .template-search .main-search__heading, .template-search h1 { font-weight: 800; letter-spacing: -0.02em; }
+
+/* Estrellas de reseñas (Judge.me → metacampos estándar de Shopify) */
+.ap-rating { display: inline-flex; align-items: center; gap: 0.8rem; font-size: 1.3rem; color: var(--ap-ink-muted); text-decoration: none; }
+.ap-rating__stars { color: #FCB829; letter-spacing: 1px; font-size: 1.6rem; }
+.ap-rating:hover span:last-child { text-decoration: underline; }
+
+/* ===================== Judge.me con la marca (widget nuevo "jm-*") ===================== */
+.jdgm-widget.jdgm-review-widget { padding-block: 4.4rem; font-family: var(--ap-font) !important; color: var(--ap-ink); }
+@media (min-width: 990px) { .jdgm-widget.jdgm-review-widget { padding-block: 7.2rem; } }
+.jdgm-widget .jm-review-widget-minimal-header__title { font-family: var(--ap-font) !important; font-size: clamp(2.6rem, 3.4vw, 3.6rem) !important; font-weight: 800 !important; letter-spacing: -0.02em; color: var(--ap-ink) !important; }
+.jdgm-widget .jm-review-widget-minimal-header__title::before { content: "RESEÑAS"; display: block; margin-bottom: 0.8rem; font-size: 1.2rem; font-weight: 700; letter-spacing: 0.08em; color: var(--ap-orange-text); }
+.jdgm-widget .jm-button--primary { background: var(--ap-orange) !important; color: var(--ap-on-brand) !important; border-color: var(--ap-orange) !important; border-radius: var(--ap-radius-md) !important; font-family: var(--ap-font) !important; font-weight: 700 !important; }
+.jdgm-widget .jm-button { border-radius: var(--ap-radius-md) !important; font-family: var(--ap-font) !important; }
+.jdgm-widget .jm-text { font-family: var(--ap-font) !important; }
+
+/* El sello va por encima de la galería en escritorio (Dawn apila la galería encima) */
+/* La galería crea su propia capa: el sello queda sobre la foto pero nunca sobre el menú ni el carrito */
+media-gallery { position: relative; z-index: 0; }
+media-gallery .ap-seal { z-index: 3; }

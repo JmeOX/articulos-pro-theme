@@ -12,7 +12,8 @@
     "hero": {
       "type": "ap-hero-product",
       "settings": {
-        "product": "gps-para-mascotas"
+        "product": "gps-para-mascotas",
+        "minis": "Envío gratis;Garantía 3 meses;Pago seguro"
       }
     },
     "trust": {
@@ -23,7 +24,7 @@
           "settings": {
             "icon": "truck",
             "title": "Envío gratis",
-            "text": "3 a 5 días hábiles"
+            "text": "3 a 7 días hábiles"
           }
         },
         "t2": {
@@ -31,7 +32,7 @@
           "settings": {
             "icon": "card",
             "title": "Pago seguro",
-            "text": "Mercado Pago, Addi, tarjeta"
+            "text": "Mercado Pago o tarjeta"
           }
         },
         "t3": {
@@ -153,14 +154,14 @@
           "type": "q",
           "settings": {
             "question": "¿El envío tiene costo?",
-            "answer": "No. El envío es gratis a toda Colombia y llega en 3 a 5 días hábiles."
+            "answer": "No. El envío es gratis a toda Colombia y llega en 3 a 7 días hábiles."
           }
         },
         "q2": {
           "type": "q",
           "settings": {
             "question": "¿Cómo puedo pagar?",
-            "answer": "Con Mercado Pago, Addi (en cuotas), tarjeta de crédito, o por transferencia coordinada por WhatsApp."
+            "answer": "Con Mercado Pago, tarjeta de crédito, o por transferencia coordinada por WhatsApp."
           }
         },
         "q3": {
