@@ -1,0 +1,25 @@
+{%- comment -%}
+  ap-info-page — plantilla de páginas informativas (Envíos, Garantía, Nosotros...).
+  - Resumen en 3 puntos: metacampo de la página artpro.resumen (lista de texto). Vacío = no se muestra.
+  - Contenido: el texto de la página en el admin (usa "Título 2" para cada bloque).
+{%- endcomment -%}
+<div class="ap-sec ap-info color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width ap-narrow">
+    {%- if section.settings.eyebrow != blank -%}<p class="ap-eyebrow">{{ section.settings.eyebrow }}</p>{%- endif -%}
+    <h1 class="ap-info__title">{{ page.title }}</h1>
+    {%- assign ap_sum = page.metafields.artpro.resumen.value -%}
+    {%- if ap_sum != blank -%}
+      <ul class="ap-info__sum">{%- for s in ap_sum -%}<li class="ap-card">{{ s }}</li>{%- endfor -%}</ul>
+    {%- endif -%}
+    <div class="ap-info__body rte">{{ page.content }}</div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "AP · Página informativa",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Etiqueta", "default": "Ayuda" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Esquema de color", "default": "scheme-1" }
+  ]
+}
+{% endschema %}

@@ -298,3 +298,22 @@ cart-drawer .ap-cart-ship { margin-bottom: 0.8rem; }
 .ap-wa-cta__title { margin: 0; font-size: 2.2rem; font-weight: 800; line-height: 1.2; }
 .ap-wa-cta p { margin: 0.4rem 0 0; font-size: 1.4rem; color: var(--ap-ink-muted); }
 @media (min-width: 990px) { .ap-wa-cta { grid-template-columns: 1fr auto; padding: 3.6rem 4rem; } .ap-wa-cta__title { font-size: 2.8rem; } }
+
+/* ===================== Páginas informativas (fase 6c) ===================== */
+.ap-info__title { margin: 0.8rem 0 0; font-size: clamp(3.2rem, 4.4vw, 4.4rem); font-weight: 800; letter-spacing: -0.02em; line-height: 1.1; }
+.ap-info__sum { list-style: none; margin: 2rem 0 0; padding: 0; display: grid; gap: 1rem; }
+.ap-info__sum li { display: flex; gap: 1.2rem; align-items: center; padding: 1.4rem 1.6rem; font-weight: 600; font-size: 1.5rem; color: var(--ap-ink); }
+.ap-info__sum li::before { content: "→"; color: var(--ap-orange); font-weight: 800; }
+@media (min-width: 750px) { .ap-info__sum { grid-template-columns: repeat(3, 1fr); gap: 1.6rem; } }
+.ap-info__body { margin-top: 3.2rem; }
+.ap-info__body h2 { font-size: 2rem; font-weight: 800; margin: 3.2rem 0 0; padding-bottom: 0.8rem; border-bottom: 2px solid currentColor; }
+.ap-info__body h2:first-child { margin-top: 0; }
+.ap-info__body p, .ap-info__body li { font-size: 1.5rem; max-width: 70ch; opacity: 0.85; }
+.ap-track { padding: 2.4rem 2rem; display: grid; gap: 1rem; max-width: 46rem; color: var(--ap-ink); }
+.ap-track__title { margin: 0 0 0.4rem; font-size: 1.8rem; font-weight: 800; }
+.ap-track label { font-size: 1.3rem; font-weight: 700; }
+.ap-track input { font: 500 1.6rem var(--ap-font); padding: 1.3rem 1.4rem; border: 1.5px solid var(--ap-line); border-radius: var(--ap-radius-md); }
+.ap-track input:focus { outline: 2px solid var(--ap-orange); outline-offset: 1px; }
+.ap-track__note { margin: 0; font-size: 1.25rem; color: var(--ap-ink-muted); }
+/* 404 y búsqueda: títulos con el estilo de la marca */
+.template-404 .title, .template-search .main-search__heading, .template-search h1 { font-weight: 800; letter-spacing: -0.02em; }

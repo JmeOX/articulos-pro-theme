@@ -40,7 +40,8 @@ Metaobjetos: Dato, Paso, Escenario, Punto, Comparativa, Respaldo, Pregunta. Secc
 - [x] Fase 5: carrito lateral (cart-drawer.liquid + ap-cart.js: banner envío, selector de paquete, regla 1 línea por producto, resumen con ahorro, Finalizar por WhatsApp, pagos, complemento artpro.complemento)
 - [x] Fase 6a: tarjeta de producto (sello, ahorro −$X, tipo), colección (etiqueta, botones ap-collection-chips, franja ap-trust-strip, sin filtros). Colecciones Tecnología/Hogar/Mascotas creadas y publicadas; menú principal actualizado.
 - [x] Fase 6b: home (ap-hero-product, ap-trust-strip, ap-categories, ap-featured, ap-star-band, ap-why, ap-faq-general, ap-wa-cta)
-- [ ] Fase 6c: páginas informativas, búsqueda, 404
+- [x] Fase 6c: páginas Envíos, Garantía y devoluciones, Rastrear mi pedido, Preguntas frecuentes, Sobre nosotros (plantillas page.info / page.rastrear / page.faq / page.nosotros; resumen = metacampo de página artpro.resumen). Menú del footer actualizado.
+- (antes 6c:) páginas informativas, búsqueda, 404
 - Nota: los nombres de sección (schema name) deben tener máx. 25 caracteres.
 - [ ] Fase 7: apps, pruebas, publicación
 

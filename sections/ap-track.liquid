@@ -1,0 +1,38 @@
+{%- comment -%}
+  ap-track — "Rastrear mi pedido": el cliente escribe su número de pedido y se abre WhatsApp con el mensaje listo.
+{%- endcomment -%}
+{%- capture ap_wa_number -%}{% render 'ap-wa-number' %}{%- endcapture -%}
+<div class="ap-sec ap-sec--tight color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width ap-narrow">
+    <form class="ap-card ap-track" data-wa="{{ ap_wa_number }}" data-msg="{{ section.settings.message | escape }}">
+      <h2 class="ap-track__title">{{ section.settings.title }}</h2>
+      <label for="ApOrder-{{ section.id }}">Número de pedido</label>
+      <input id="ApOrder-{{ section.id }}" name="order" type="text" placeholder="Ej: #1001" required autocomplete="off">
+      <button type="submit" class="ap-btn ap-btn--primary">{{ section.settings.button }}</button>
+      <p class="ap-track__note">Se abre WhatsApp con tu número de pedido ya escrito.</p>
+    </form>
+  </div>
+</div>
+<script>
+  (() => {
+    const f = document.currentScript.previousElementSibling.querySelector('form');
+    f.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const order = f.order.value.trim();
+      if (!order) return;
+      const text = f.dataset.msg + ' ' + order;
+      window.open('https://wa.me/' + f.dataset.wa + '?text=' + encodeURIComponent(text), '_blank', 'noopener');
+    });
+  })();
+</script>
+{% schema %}
+{
+  "name": "AP · Rastrear pedido",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Título", "default": "Consulta tu pedido" },
+    { "type": "text", "id": "message", "label": "Mensaje de WhatsApp", "default": "Hola, quiero saber el estado de mi pedido" },
+    { "type": "text", "id": "button", "label": "Botón", "default": "Consultar por WhatsApp" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Esquema de color", "default": "scheme-1" }
+  ]
+}
+{% endschema %}

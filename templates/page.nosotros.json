@@ -1,0 +1,68 @@
+{
+  "sections": {
+    "main": {
+      "type": "ap-info-page",
+      "settings": {
+        "eyebrow": "Artículos Pro"
+      }
+    },
+    "why": {
+      "type": "ap-why",
+      "blocks": {
+        "w1": {
+          "type": "item",
+          "settings": {
+            "icon": "shield",
+            "title": "Calidad garantizada",
+            "text": "3 meses de garantía. Si tu producto falla, te respondemos."
+          }
+        },
+        "w2": {
+          "type": "item",
+          "settings": {
+            "icon": "truck",
+            "title": "Entrega garantizada",
+            "text": "Hacemos seguimiento a tu pedido hasta que llegue."
+          }
+        },
+        "w3": {
+          "type": "item",
+          "settings": {
+            "icon": "chat",
+            "title": "Soporte siempre",
+            "text": "Te asesoramos por WhatsApp antes y después de comprar."
+          }
+        },
+        "w4": {
+          "type": "item",
+          "settings": {
+            "icon": "arrow",
+            "title": "No es lo del montón",
+            "text": "Productos útiles a precios accesibles, que no encuentras en cualquier tienda."
+          }
+        }
+      },
+      "block_order": [
+        "w1",
+        "w2",
+        "w3",
+        "w4"
+      ],
+      "settings": {
+        "color_scheme": "scheme-2"
+      }
+    },
+    "wa": {
+      "type": "ap-wa-cta",
+      "settings": {
+        "title": "¿Necesitas ayuda? Escríbenos por WhatsApp",
+        "color_scheme": "scheme-1"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "why",
+    "wa"
+  ]
+}

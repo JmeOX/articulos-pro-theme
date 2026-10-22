@@ -1,0 +1,24 @@
+{
+  "sections": {
+    "main": {
+      "type": "ap-info-page",
+      "settings": {}
+    },
+    "track": {
+      "type": "ap-track",
+      "settings": {}
+    },
+    "wa": {
+      "type": "ap-wa-cta",
+      "settings": {
+        "title": "¿Necesitas ayuda? Escríbenos por WhatsApp",
+        "color_scheme": "scheme-1"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "track",
+    "wa"
+  ]
+}
