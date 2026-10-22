@@ -76,6 +76,7 @@
           </span>
         </button>
       </div>
+      {%- if cart != empty -%}<p class="ap-cart-ship">✓ Tu envío es <b>gratis</b> · Llega en 3 a 5 días hábiles</p>{%- endif -%}
       <cart-drawer-items
         view-event-payload="{{ cart | standard_event_data: 'view', context: 'dialog' | escape }}"
         view-event-trigger="manual"
@@ -292,6 +293,9 @@
                           role="cell"
                           headers="CartDrawer-ColumnQuantity"
                         >
+                          {%- if item.product.options.size == 1 and item.product.variants.size > 1 -%}
+                            {% render 'ap-cart-pack', item: item %}
+                          {%- else -%}
                           <quantity-popover>
                             <div class="cart-item__quantity-wrapper quantity-popover-wrapper">
                               <div class="quantity-popover-container{% if has_qty_rules or has_vol_pricing %} quantity-popover-container--hover{% endif %}">
@@ -472,11 +476,13 @@
                               </span>
                             </div>
                           </quantity-popover>
+                          {%- endif -%}
                         </td>
                       </tr>
                     {%- endfor -%}
                   </tbody>
                 </table>
+                {% render 'ap-cart-upsell' %}
               </div>
             {%- endif -%}
             <p id="CartDrawer-LiveRegionText" class="visually-hidden" role="status"></p>
@@ -526,6 +532,7 @@
             {%- endif -%}
           </div>
 
+          {% render 'ap-cart-summary' %}
           <div class="totals" role="status">
             <h2 class="totals__total">{{ 'sections.cart.estimated_total' | t }}</h2>
             <p class="totals__total-value">{{ cart.total_price | money_with_currency }}</p>
@@ -585,8 +592,10 @@
               disabled
             {% endif %}
           >
-            {{ 'sections.cart.checkout' | t }}
+            Finalizar compra
           </button>
+          {% render 'ap-cart-whatsapp' %}
+          {% render 'ap-payment-badges' %}
         </div>
       </div>
     </div>

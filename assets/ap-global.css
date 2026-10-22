@@ -209,3 +209,29 @@
 /* Cuando la barra está visible, subir el botón de WhatsApp para que no se tapen */
 body.ap-sticky-on .ap-wa-float { bottom: calc(96px + env(safe-area-inset-bottom, 0px)); }
 @media (prefers-reduced-motion: reduce) { .ap-sticky { transition: none; } }
+
+/* ===================== Carrito lateral (fase 5) ===================== */
+.ap-cart-ship { margin: 0; padding: 1rem 2rem; background: var(--ap-orange-soft); color: var(--ap-ink); font-size: 1.3rem; font-weight: 600; }
+.ap-cart-pack { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+.ap-cart-pack__btn { font: 700 1.2rem var(--ap-font); padding: 0.6rem 1rem; border: 1.5px solid var(--ap-line); background: var(--ap-surface); color: var(--ap-ink); border-radius: var(--ap-radius-md); cursor: pointer; }
+.ap-cart-pack__btn.is-on { background: var(--ap-ink); border-color: var(--ap-ink); color: #fff; opacity: 1; cursor: default; }
+.ap-cart-pack__btn:disabled:not(.is-on) { opacity: 0.4; cursor: not-allowed; }
+.ap-upsell { margin-top: 1.6rem; padding: 1.2rem; border: 1px solid var(--ap-line); border-radius: var(--ap-radius-lg); box-shadow: var(--ap-shadow-card); }
+.ap-upsell__label { margin: 0 0 0.8rem; font-size: 1.1rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ap-orange-text); }
+.ap-upsell__row { display: flex; align-items: center; gap: 1rem; }
+.ap-upsell__img { width: 56px; height: 56px; object-fit: cover; border-radius: var(--ap-radius-md); }
+.ap-upsell__info { flex: 1; min-width: 0; display: grid; font-size: 1.3rem; }
+.ap-upsell__add { padding: 0.8rem 1.2rem; font-size: 1.3rem; }
+cart-drawer .totals, cart-drawer .tax-note { display: none; }
+.ap-cart-sum { margin: 0 0 1.2rem; display: grid; gap: 0.4rem; font-size: 1.4rem; }
+.ap-cart-sum div { display: flex; justify-content: space-between; }
+.ap-cart-sum dd { margin: 0; }
+.ap-cart-sum__save { color: var(--ap-orange-text); font-weight: 700; }
+.ap-cart-sum__total { margin-top: 0.4rem; padding-top: 0.8rem; border-top: 1px solid var(--ap-line); font-size: 1.8rem; font-weight: 800; }
+cart-drawer .cart__ctas { display: grid; gap: 1rem; }
+cart-drawer .cart__checkout-button { border-radius: var(--ap-radius-md); font-weight: 700; }
+.ap-cart-wa { width: 100%; }
+cart-drawer .ap-pay { justify-content: center; color: var(--ap-ink-muted); }
+/* En líneas con paquete, ocultar "Paquete: X" (ya lo muestran los botones) y dar aire al banner */
+cart-drawer .cart-item:has(.ap-cart-pack) .product-option { display: none; }
+cart-drawer .ap-cart-ship { margin-bottom: 0.8rem; }

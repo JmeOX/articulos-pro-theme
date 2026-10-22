@@ -1,0 +1,15 @@
+{%- comment -%}
+  ap-cart-whatsapp — "Finalizar por WhatsApp" con el pedido completo ya escrito (para pagar por transferencia).
+{%- endcomment -%}
+{%- if settings.ap_whatsapp_number != blank and cart.item_count > 0 -%}
+  {%- capture ap_wa_number -%}{% render 'ap-wa-number' %}{%- endcapture -%}
+  {%- capture ap_msg -%}
+Hola, quiero finalizar este pedido:
+{% for item in cart.items %}- {{ item.product.title }}{% unless item.product.has_only_default_variant %} ({{ item.variant.title }}){% endunless %} x{{ item.quantity }}: {{ item.final_line_price | money_without_trailing_zeros }}
+{% endfor %}Total: {{ cart.total_price | money_without_trailing_zeros }}
+  {%- endcapture -%}
+  <a class="ap-btn ap-btn--secondary ap-cart-wa" href="https://wa.me/{{ ap_wa_number }}?text={{ ap_msg | strip | url_encode }}" target="_blank" rel="noopener">
+    <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.6-1.2A9 9 0 1 0 12 3z" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+    Finalizar por WhatsApp
+  </a>
+{%- endif -%}

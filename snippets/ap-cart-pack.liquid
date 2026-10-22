@@ -1,0 +1,16 @@
+{%- comment -%}
+  ap-cart-pack — en el carrito, reemplaza los botones + / − por el selector de paquete (1, 2, 3 unidades).
+  Solo para productos con UNA opción y varias variantes. Al tocar otro paquete, ap-cart.js
+  cambia la variante de esa línea (quita la vieja y agrega la nueva).
+{%- endcomment -%}
+<div class="ap-cart-pack" role="group" aria-label="Cambiar {{ item.product.options.first | downcase }}">
+  {%- for v in item.product.variants -%}
+    <button type="button"
+      class="ap-cart-pack__btn{% if v.id == item.variant_id %} is-on{% endif %}"
+      data-ap-pack-from="{{ item.key }}"
+      data-ap-pack-to="{{ v.id }}"
+      {% if v.id == item.variant_id or v.available == false %}disabled{% endif %}>
+      {{ v.option1 }}
+    </button>
+  {%- endfor -%}
+</div>

@@ -1,0 +1,20 @@
+{%- comment -%}
+  ap-cart-upsell — complemento sugerido en el carrito.
+  Dato: metacampo artpro.complemento (referencia a producto) del primer producto del carrito.
+  No se muestra si está vacío, si el complemento está agotado o si ya está en el carrito.
+{%- endcomment -%}
+{%- assign ap_comp = cart.items.first.product.metafields.artpro.complemento.value -%}
+{%- if ap_comp != blank and ap_comp.available -%}
+  {%- assign ap_in_cart = cart.items | where: 'product_id', ap_comp.id | size -%}
+  {%- if ap_in_cart == 0 -%}
+    {%- assign ap_cv = ap_comp.selected_or_first_available_variant -%}
+    <div class="ap-upsell">
+      <p class="ap-upsell__label">Complétalo con</p>
+      <div class="ap-upsell__row">
+        {%- if ap_comp.featured_media -%}{{ ap_comp.featured_media | image_url: width: 120 | image_tag: class: 'ap-upsell__img', loading: 'lazy' }}{%- endif -%}
+        <div class="ap-upsell__info"><b>{{ ap_comp.title }}</b><span>{{ ap_cv.price | money_without_trailing_zeros }}</span></div>
+        <button type="button" class="ap-btn ap-btn--secondary ap-upsell__add" data-ap-add-variant="{{ ap_cv.id }}">Agregar</button>
+      </div>
+    </div>
+  {%- endif -%}
+{%- endif -%}

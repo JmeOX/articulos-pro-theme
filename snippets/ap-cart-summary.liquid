@@ -1,0 +1,23 @@
+{%- comment -%}
+  ap-cart-summary — resumen del carrito: subtotal (precio antes), ahorro, envío gratis y total.
+{%- endcomment -%}
+{%- liquid
+  assign ap_before = 0
+  for item in cart.items
+    assign ap_unit = item.variant.compare_at_price | default: item.original_price
+    if ap_unit < item.original_price
+      assign ap_unit = item.original_price
+    endif
+    assign ap_line = ap_unit | times: item.quantity
+    assign ap_before = ap_before | plus: ap_line
+  endfor
+  assign ap_save = ap_before | minus: cart.total_price
+-%}
+<dl class="ap-cart-sum">
+  <div><dt>Subtotal</dt><dd>{{ ap_before | money_without_trailing_zeros }}</dd></div>
+  {%- if ap_save > 0 -%}
+    <div class="ap-cart-sum__save"><dt>Ahorras</dt><dd>−{{ ap_save | money_without_trailing_zeros }}</dd></div>
+  {%- endif -%}
+  <div><dt>Envío</dt><dd><b>Gratis</b></dd></div>
+  <div class="ap-cart-sum__total"><dt>Total</dt><dd>{{ cart.total_price | money_without_trailing_zeros }}</dd></div>
+</dl>
