@@ -9,76 +9,200 @@
  */
 {
   "sections": {
-    "image_banner": {
-      "type": "image-banner",
+    "hero": {
+      "type": "ap-hero-product",
+      "settings": {
+        "product": "gps-para-mascotas"
+      }
+    },
+    "trust": {
+      "type": "ap-trust-strip",
       "blocks": {
-        "heading": {
-          "type": "heading",
+        "t1": {
+          "type": "item",
           "settings": {
-            "heading": "Browse our latest products",
-            "heading_size": "h0"
+            "icon": "truck",
+            "title": "Envío gratis",
+            "text": "3 a 5 días hábiles"
           }
         },
-        "button": {
-          "type": "buttons",
+        "t2": {
+          "type": "item",
           "settings": {
-            "button_label_1": "Shop all",
-            "button_link_1": "shopify://collections/all",
-            "button_style_secondary_1": true,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
+            "icon": "card",
+            "title": "Pago seguro",
+            "text": "Mercado Pago, Addi, tarjeta"
+          }
+        },
+        "t3": {
+          "type": "item",
+          "settings": {
+            "icon": "shield",
+            "title": "Garantía",
+            "text": "3 meses en todos los productos"
+          }
+        },
+        "t4": {
+          "type": "item",
+          "settings": {
+            "icon": "chat",
+            "title": "Soporte",
+            "text": "Por WhatsApp, antes y después"
           }
         }
       },
       "block_order": [
-        "heading",
-        "button"
+        "t1",
+        "t2",
+        "t3",
+        "t4"
       ],
+      "settings": {}
+    },
+    "cats": {
+      "type": "ap-categories",
+      "blocks": {
+        "c1": {
+          "type": "collection",
+          "settings": {
+            "collection": "tecnologia"
+          }
+        },
+        "c2": {
+          "type": "collection",
+          "settings": {
+            "collection": "hogar"
+          }
+        },
+        "c3": {
+          "type": "collection",
+          "settings": {
+            "collection": "mascotas"
+          }
+        }
+      },
+      "block_order": [
+        "c1",
+        "c2",
+        "c3"
+      ],
+      "settings": {}
+    },
+    "featured": {
+      "type": "ap-featured",
       "settings": {
-        "image_overlay_opacity": 40,
-        "image_height": "large",
-        "desktop_content_position": "bottom-center",
-        "show_text_box": false,
-        "image_behavior": "none",
-        "desktop_content_alignment": "center",
-        "color_scheme": "scheme-3",
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": false,
-        "show_text_below": false
+        "collection": "frontpage"
       }
     },
-    "featured_collection": {
-      "type": "featured-collection",
+    "star": {
+      "type": "ap-star-band",
       "settings": {
-        "title": "Featured products",
-        "heading_size": "h2",
-        "description": "",
-        "show_description": false,
-        "description_style": "body",
-        "collection": "all",
-        "products_to_show": 8,
-        "columns_desktop": 4,
-        "color_scheme": "scheme-1",
-        "full_width": false,
-        "show_view_all": true,
-        "view_all_style": "solid",
-        "enable_desktop_slider": false,
-        "swipe_on_mobile": false,
-        "image_ratio": "adapt",
-        "image_shape": "default",
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": false,
-        "quick_add": "none",
-        "columns_mobile": "2",
-        "padding_top": 44,
-        "padding_bottom": 36
+        "product": "gps-para-mascotas",
+        "text": "Para que nunca más tengas que salir a buscarlo sin saber dónde está.",
+        "button": "Conocer el GPS"
+      }
+    },
+    "why": {
+      "type": "ap-why",
+      "blocks": {
+        "w1": {
+          "type": "item",
+          "settings": {
+            "icon": "shield",
+            "title": "Calidad garantizada",
+            "text": "3 meses de garantía. Si tu producto falla, te respondemos."
+          }
+        },
+        "w2": {
+          "type": "item",
+          "settings": {
+            "icon": "truck",
+            "title": "Entrega garantizada",
+            "text": "Hacemos seguimiento a tu pedido hasta que llegue."
+          }
+        },
+        "w3": {
+          "type": "item",
+          "settings": {
+            "icon": "chat",
+            "title": "Soporte siempre",
+            "text": "Te asesoramos por WhatsApp antes y después de comprar."
+          }
+        },
+        "w4": {
+          "type": "item",
+          "settings": {
+            "icon": "arrow",
+            "title": "No es lo del montón",
+            "text": "Productos útiles a precios accesibles, que no encuentras en cualquier tienda."
+          }
+        }
+      },
+      "block_order": [
+        "w1",
+        "w2",
+        "w3",
+        "w4"
+      ],
+      "settings": {}
+    },
+    "faq": {
+      "type": "ap-faq-general",
+      "blocks": {
+        "q1": {
+          "type": "q",
+          "settings": {
+            "question": "¿El envío tiene costo?",
+            "answer": "No. El envío es gratis a toda Colombia y llega en 3 a 5 días hábiles."
+          }
+        },
+        "q2": {
+          "type": "q",
+          "settings": {
+            "question": "¿Cómo puedo pagar?",
+            "answer": "Con Mercado Pago, Addi (en cuotas), tarjeta de crédito, o por transferencia coordinada por WhatsApp."
+          }
+        },
+        "q3": {
+          "type": "q",
+          "settings": {
+            "question": "¿Cómo sé dónde está mi pedido?",
+            "answer": "Te enviamos el número de guía por WhatsApp para que lo sigas."
+          }
+        },
+        "q4": {
+          "type": "q",
+          "settings": {
+            "question": "¿Qué garantía tienen los productos?",
+            "answer": "3 meses. Si el producto falla, gestionamos la devolución según nuestra política de garantía. No cubre daños por mal uso."
+          }
+        }
+      },
+      "block_order": [
+        "q1",
+        "q2",
+        "q3",
+        "q4"
+      ],
+      "settings": {
+        "color_scheme": "scheme-2"
+      }
+    },
+    "wa": {
+      "type": "ap-wa-cta",
+      "settings": {
+        "color_scheme": "scheme-2"
       }
     }
   },
   "order": [
-    "image_banner",
-    "featured_collection"
+    "hero",
+    "trust",
+    "cats",
+    "featured",
+    "star",
+    "why",
+    "faq",
+    "wa"
   ]
 }

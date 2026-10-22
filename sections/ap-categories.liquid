@@ -1,0 +1,35 @@
+{%- comment -%}
+  ap-categories — tarjetas de categorías. Cada bloque es una colección.
+  Imagen: la de la colección o, si no tiene, la del primer producto. Colecciones vacías no se muestran.
+{%- endcomment -%}
+<div class="ap-sec color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width">
+    {% render 'ap-sec-head', eyebrow: section.settings.eyebrow, title: section.settings.title %}
+    <div class="ap-cats">
+      {%- for block in section.blocks -%}
+        {%- assign c = block.settings.collection -%}
+        {%- if c != blank and c.products_count > 0 -%}
+          <a class="ap-cat" href="{{ c.url }}" {{ block.shopify_attributes }}>
+            <div class="ap-cat__img">
+              {%- assign ap_img = c.featured_image | default: c.products.first.featured_media -%}
+              {%- if ap_img -%}{{ ap_img | image_url: width: 600 | image_tag: loading: 'lazy', widths: '300, 450, 600', sizes: '(min-width: 990px) 30vw, 33vw' }}{%- endif -%}
+            </div>
+            <b>{{ c.title }}</b>
+          </a>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "AP · Categorías",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Etiqueta", "default": "Categorías" },
+    { "type": "text", "id": "title", "label": "Título", "default": "¿Qué estás buscando?" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Esquema de color", "default": "scheme-1" }
+  ],
+  "blocks": [{ "type": "collection", "name": "Colección", "settings": [{ "type": "collection", "id": "collection", "label": "Colección" }] }],
+  "presets": [{ "name": "AP · Categorías", "blocks": [{ "type": "collection" }, { "type": "collection" }, { "type": "collection" }] }]
+}
+{% endschema %}

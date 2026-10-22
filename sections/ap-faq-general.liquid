@@ -1,0 +1,38 @@
+{%- comment -%}
+  ap-faq-general — preguntas frecuentes generales de la tienda (bloques editables). Para el home y la página de ayuda.
+{%- endcomment -%}
+{%- if section.blocks.size > 0 -%}
+<div class="ap-sec color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width ap-narrow">
+    {% render 'ap-sec-head', eyebrow: section.settings.eyebrow, title: section.settings.title %}
+    <div class="ap-faq">
+      {%- for block in section.blocks -%}
+        <details class="ap-fq" {{ block.shopify_attributes }}>
+          <summary>{{ block.settings.question }}<span aria-hidden="true">+</span></summary>
+          <p>{{ block.settings.answer }}</p>
+        </details>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+{%- endif -%}
+{% schema %}
+{
+  "name": "AP · Preguntas generales",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Etiqueta", "default": "Preguntas frecuentes" },
+    { "type": "text", "id": "title", "label": "Título", "default": "Antes de comprar" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Esquema de color", "default": "scheme-1" }
+  ],
+  "blocks": [{ "type": "q", "name": "Pregunta", "settings": [
+    { "type": "text", "id": "question", "label": "Pregunta", "default": "¿El envío tiene costo?" },
+    { "type": "textarea", "id": "answer", "label": "Respuesta", "default": "No. El envío es gratis a toda Colombia y llega en 3 a 5 días hábiles." }
+  ] }],
+  "presets": [{ "name": "AP · Preguntas generales", "blocks": [
+    { "type": "q", "settings": { "question": "¿El envío tiene costo?", "answer": "No. El envío es gratis a toda Colombia y llega en 3 a 5 días hábiles." } },
+    { "type": "q", "settings": { "question": "¿Cómo puedo pagar?", "answer": "Con Mercado Pago, Addi (en cuotas), tarjeta de crédito, o por transferencia coordinada por WhatsApp." } },
+    { "type": "q", "settings": { "question": "¿Cómo sé dónde está mi pedido?", "answer": "Te enviamos el número de guía por WhatsApp para que lo sigas." } },
+    { "type": "q", "settings": { "question": "¿Qué garantía tienen los productos?", "answer": "3 meses. Si el producto falla, gestionamos la devolución según nuestra política de garantía. No cubre daños por mal uso." } }
+  ] }]
+}
+{% endschema %}

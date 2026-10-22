@@ -1,0 +1,35 @@
+{%- comment -%}
+  ap-star-band — banda negra con un producto favorito: foto, 3 beneficios (de artpro.beneficios), precio y botón.
+{%- endcomment -%}
+{%- assign ap_p = section.settings.product -%}
+{%- if ap_p != blank -%}
+{%- assign ap_v = ap_p.selected_or_first_available_variant -%}
+<div class="ap-sec color-{{ section.settings.color_scheme }} gradient ap-star">
+  <div class="page-width ap-star__in">
+    <div class="ap-star__img">{%- if ap_p.featured_media -%}{{ ap_p.featured_media | image_url: width: 900 | image_tag: loading: 'lazy', widths: '450, 700, 900', sizes: '(min-width: 990px) 45vw, 100vw' }}{%- endif -%}</div>
+    <div>
+      {% render 'ap-sec-head', eyebrow: section.settings.eyebrow, title: ap_p.title, lead: section.settings.text %}
+      {%- assign ap_b = ap_p.metafields.artpro.beneficios.value -%}
+      {%- if ap_b != blank -%}<ul class="ap-star__list">{%- for b in ap_b limit: 3 -%}<li>{{ b }}</li>{%- endfor -%}</ul>{%- endif -%}
+      <div class="ap-price">
+        <span class="ap-price__now">{{ ap_v.price | money_without_trailing_zeros }}</span>
+        {%- if ap_v.compare_at_price > ap_v.price -%}<s class="ap-price__old">{{ ap_v.compare_at_price | money_without_trailing_zeros }}</s>{%- endif -%}
+      </div>
+      <a class="ap-btn ap-btn--primary ap-star__btn" href="{{ ap_p.url }}">{{ section.settings.button }}</a>
+    </div>
+  </div>
+</div>
+{%- endif -%}
+{% schema %}
+{
+  "name": "AP · Banda favorito",
+  "settings": [
+    { "type": "product", "id": "product", "label": "Producto" },
+    { "type": "text", "id": "eyebrow", "label": "Etiqueta", "default": "El favorito" },
+    { "type": "textarea", "id": "text", "label": "Texto" },
+    { "type": "text", "id": "button", "label": "Botón", "default": "Conocerlo" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Esquema de color", "default": "scheme-4" }
+  ],
+  "presets": [{ "name": "AP · Banda favorito" }]
+}
+{% endschema %}

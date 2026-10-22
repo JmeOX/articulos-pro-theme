@@ -1,0 +1,59 @@
+{%- comment -%}
+  ap-hero-product — portada del home protagonizada por un producto estrella.
+  Elige el producto en el editor. La imagen es la del producto, o una propia si la subes.
+{%- endcomment -%}
+{%- assign ap_p = section.settings.product -%}
+<div class="ap-hero color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width ap-hero__in">
+    <div class="ap-hero__media">
+      {%- if section.settings.image != blank -%}
+        {{ section.settings.image | image_url: width: 1400 | image_tag: loading: 'eager', fetchpriority: 'high', widths: '600, 900, 1200, 1400', sizes: '(min-width: 990px) 55vw, 100vw' }}
+      {%- elsif ap_p.featured_media -%}
+        {{ ap_p.featured_media | image_url: width: 1400 | image_tag: loading: 'eager', fetchpriority: 'high', widths: '600, 900, 1200, 1400', sizes: '(min-width: 990px) 55vw, 100vw' }}
+      {%- else -%}
+        {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+      {%- endif -%}
+    </div>
+    <div class="ap-hero__txt">
+      {%- if section.settings.eyebrow != blank -%}<p class="ap-eyebrow">{{ section.settings.eyebrow }}</p>{%- endif -%}
+      <h1 class="ap-hero__title">{{ section.settings.heading | default: ap_p.title }}</h1>
+      {%- if section.settings.text != blank -%}<p class="ap-hero__sub">{{ section.settings.text }}</p>{%- endif -%}
+      {%- if ap_p != blank -%}
+        {%- assign ap_v = ap_p.selected_or_first_available_variant -%}
+        <div class="ap-price">
+          <span class="ap-price__now">{{ ap_v.price | money_without_trailing_zeros }}</span>
+          {%- if ap_v.compare_at_price > ap_v.price -%}
+            <s class="ap-price__old">{{ ap_v.compare_at_price | money_without_trailing_zeros }}</s>
+            <span class="ap-price__save">Ahorras {{ ap_v.compare_at_price | minus: ap_v.price | money_without_trailing_zeros }}</span>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+      <div class="ap-hero__acts">
+        {%- if ap_p != blank -%}<a class="ap-btn ap-btn--primary" href="{{ ap_p.url }}">{{ section.settings.button_1 }}</a>{%- endif -%}
+        {%- if section.settings.button_2_link != blank -%}<a class="ap-btn ap-btn--secondary" href="{{ section.settings.button_2_link }}">{{ section.settings.button_2 }}</a>{%- endif -%}
+      </div>
+      {%- assign ap_minis = section.settings.minis | split: ';' -%}
+      {%- if section.settings.minis != blank -%}
+        <ul class="ap-hero__mini">{%- for m in ap_minis -%}{%- assign m = m | strip -%}{%- if m != blank -%}<li>{{ m }}</li>{%- endif -%}{%- endfor -%}</ul>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "AP · Portada producto",
+  "settings": [
+    { "type": "product", "id": "product", "label": "Producto estrella" },
+    { "type": "image_picker", "id": "image", "label": "Imagen (opcional, si no se usa la del producto)" },
+    { "type": "text", "id": "eyebrow", "label": "Etiqueta", "default": "Producto estrella" },
+    { "type": "text", "id": "heading", "label": "Título", "default": "Sabe dónde está tu mascota, siempre" },
+    { "type": "textarea", "id": "text", "label": "Texto", "default": "GPS 4G homologado en Colombia. Ves su ubicación en tiempo real desde tu celular." },
+    { "type": "text", "id": "button_1", "label": "Botón principal", "default": "Ver el producto" },
+    { "type": "text", "id": "button_2", "label": "Botón secundario", "default": "Ver productos" },
+    { "type": "url", "id": "button_2_link", "label": "Enlace botón secundario", "default": "/collections/all" },
+    { "type": "text", "id": "minis", "label": "Mini garantías (separadas por ;)", "default": "Envío gratis;Garantía 3 meses;Paga con Addi" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Esquema de color", "default": "scheme-1" }
+  ],
+  "presets": [{ "name": "AP · Portada producto" }]
+}
+{% endschema %}

@@ -256,3 +256,45 @@ cart-drawer .ap-cart-ship { margin-bottom: 0.8rem; }
 .ap-trust4__item span { color: var(--ap-ink-muted); }
 .ap-ic { width: 24px; height: 24px; flex-shrink: 0; stroke: var(--ap-ink); fill: none; stroke-width: 2; stroke-linecap: square; }
 @media (min-width: 990px) { .ap-trust4 { grid-template-columns: repeat(4, 1fr); } .ap-trust4__item { padding: 2rem; } }
+
+/* ===================== Home (fase 6b) ===================== */
+.ap-hero { padding-block: 2.4rem 4rem; }
+.ap-hero__in { display: grid; gap: 2.4rem; align-items: center; }
+/* La foto se muestra completa (sin recortes), en su proporción original */
+.ap-hero__media img, .ap-hero__media svg { width: 100%; height: auto; max-height: 72vh; object-fit: contain; border-radius: var(--ap-radius-lg); display: block; }
+.ap-hero__title { margin: 1rem 0 0; font-size: clamp(3.4rem, 5vw, 5.4rem); line-height: 1.08; font-weight: 800; letter-spacing: -0.03em; text-wrap: balance; }
+.ap-hero__sub { margin: 1.2rem 0 0; font-size: 1.6rem; opacity: 0.75; max-width: 46ch; }
+.ap-hero .ap-price { margin-top: 1.6rem; }
+.ap-hero__acts { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2rem; }
+.ap-hero__mini { list-style: none; display: flex; flex-wrap: wrap; gap: 0.6rem 1.6rem; margin: 1.8rem 0 0; padding: 0; font-size: 1.3rem; opacity: 0.75; }
+.ap-hero__mini li::before { content: "✓ "; color: var(--ap-orange); font-weight: 800; }
+@media (min-width: 990px) { .ap-hero { padding-block: 5.6rem 7.2rem; } .ap-hero__in { grid-template-columns: 1fr 1.05fr; gap: 5.6rem; } .ap-hero__txt { order: -1; } }
+.ap-cats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin-top: 2.4rem; }
+.ap-cat { text-decoration: none; color: inherit; }
+.ap-cat__img { aspect-ratio: 1 / 1; border-radius: var(--ap-radius-lg); overflow: hidden; background: var(--ap-surface-alt); }
+.ap-cat__img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.ap-cat b { display: flex; justify-content: space-between; margin-top: 0.8rem; font-size: 1.4rem; }
+.ap-cat b::after { content: "→"; color: var(--ap-orange); }
+@media (min-width: 990px) { .ap-cats { gap: 2.4rem; } .ap-cat__img { aspect-ratio: 4 / 3; } .ap-cat b { font-size: 1.8rem; } }
+.ap-featured { margin-top: 2.4rem; }
+.ap-featured__more { margin: 2.8rem 0 0; }
+.ap-star__in { display: grid; gap: 2.4rem; align-items: center; }
+.ap-star__img img { width: 100%; height: auto; border-radius: var(--ap-radius-lg); display: block; }
+.ap-star .ap-eyebrow { color: var(--ap-orange); }
+.ap-star__list { list-style: none; margin: 1.6rem 0 0; padding: 0; display: grid; gap: 0.8rem; }
+.ap-star__list li::before { content: "→ "; color: var(--ap-orange); font-weight: 800; }
+.ap-star .ap-price { margin-top: 1.8rem; }
+.ap-star .ap-price__old { color: inherit; opacity: 0.6; }
+.ap-star__btn { margin-top: 2rem; }
+@media (min-width: 990px) { .ap-star__in { grid-template-columns: 1fr 1fr; gap: 6.4rem; } }
+.ap-why { display: grid; gap: 1.2rem; margin-top: 2.4rem; }
+.ap-why__card { padding: 2rem; color: var(--ap-ink); }
+.ap-why__ic { width: 40px; height: 40px; border: 2px solid var(--ap-ink); border-radius: var(--ap-radius-sm); display: flex; align-items: center; justify-content: center; margin-bottom: 1.2rem; }
+.ap-why__card h3 { margin: 0; font-size: 1.7rem; font-weight: 700; }
+.ap-why__card p { margin: 0.4rem 0 0; font-size: 1.4rem; color: var(--ap-ink-muted); }
+@media (min-width: 600px) { .ap-why { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 990px) { .ap-why { grid-template-columns: repeat(4, 1fr); gap: 2rem; } }
+.ap-wa-cta { display: grid; gap: 1.6rem; align-items: center; padding: 2.4rem; border-radius: var(--ap-radius-lg); background: var(--ap-orange-soft); color: var(--ap-ink); }
+.ap-wa-cta__title { margin: 0; font-size: 2.2rem; font-weight: 800; line-height: 1.2; }
+.ap-wa-cta p { margin: 0.4rem 0 0; font-size: 1.4rem; color: var(--ap-ink-muted); }
+@media (min-width: 990px) { .ap-wa-cta { grid-template-columns: 1fr auto; padding: 3.6rem 4rem; } .ap-wa-cta__title { font-size: 2.8rem; } }

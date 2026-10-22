@@ -1,0 +1,25 @@
+{%- comment -%}
+  ap-wa-cta — llamado a escribir por WhatsApp (usa el número y horario de Configuración del tema → Artículos Pro).
+{%- endcomment -%}
+{%- if settings.ap_whatsapp_number != blank -%}
+{%- capture ap_wa_number -%}{% render 'ap-wa-number' %}{%- endcapture -%}
+<div class="ap-sec ap-sec--tight color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width">
+    <div class="ap-wa-cta">
+      <div><h2 class="ap-wa-cta__title">{{ section.settings.title }}</h2>{%- if settings.ap_hours != blank -%}<p>{{ settings.ap_hours }}</p>{%- endif -%}</div>
+      <a class="ap-btn ap-btn--secondary" href="https://wa.me/{{ ap_wa_number }}?text={{ settings.ap_whatsapp_message | url_encode }}" target="_blank" rel="noopener">{{ section.settings.button }}</a>
+    </div>
+  </div>
+</div>
+{%- endif -%}
+{% schema %}
+{
+  "name": "AP · Llamado WhatsApp",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Título", "default": "¿Tienes dudas? Te asesoramos por WhatsApp" },
+    { "type": "text", "id": "button", "label": "Botón", "default": "Escribir por WhatsApp" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Esquema de color", "default": "scheme-1" }
+  ],
+  "presets": [{ "name": "AP · Llamado WhatsApp" }]
+}
+{% endschema %}
