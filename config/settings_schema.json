@@ -1466,5 +1466,122 @@
         "label": "t:settings_schema.customer_accounts.settings.customer_account_menu.label"
       }
     ]
+  },
+  {
+    "name": "Artículos Pro",
+    "settings": [
+      {
+        "type": "header",
+        "content": "WhatsApp y atención"
+      },
+      {
+        "type": "text",
+        "id": "ap_whatsapp_number",
+        "label": "Número de WhatsApp",
+        "info": "Formato internacional sin + ni espacios. Ej: 573001234567"
+      },
+      {
+        "type": "text",
+        "id": "ap_whatsapp_message",
+        "label": "Mensaje predeterminado de WhatsApp",
+        "default": "Hola, quiero información sobre "
+      },
+      {
+        "type": "text",
+        "id": "ap_store_email",
+        "label": "Correo de la tienda"
+      },
+      {
+        "type": "text",
+        "id": "ap_hours",
+        "label": "Horario de atención",
+        "default": "Lun a vie 8 a.m.–7 p.m. · Sáb hasta 12 m."
+      },
+      {
+        "type": "header",
+        "content": "Garantía"
+      },
+      {
+        "type": "number",
+        "id": "ap_warranty_months",
+        "label": "Meses de garantía por defecto",
+        "default": 3,
+        "info": "Se usa cuando el producto no tiene su propia garantía."
+      },
+      {
+        "type": "header",
+        "content": "Barra de confianza"
+      },
+      {
+        "type": "text",
+        "id": "ap_trust_1_label",
+        "label": "Elemento 1: etiqueta",
+        "default": "Envío"
+      },
+      {
+        "type": "text",
+        "id": "ap_trust_1_text",
+        "label": "Elemento 1: texto",
+        "default": "Gratis · 3–5 días"
+      },
+      {
+        "type": "text",
+        "id": "ap_trust_2_label",
+        "label": "Elemento 2: etiqueta",
+        "default": "Pago"
+      },
+      {
+        "type": "text",
+        "id": "ap_trust_2_text",
+        "label": "Elemento 2: texto",
+        "default": "100% seguro"
+      },
+      {
+        "type": "text",
+        "id": "ap_trust_3_label",
+        "label": "Elemento 3: etiqueta",
+        "default": "Garantía"
+      },
+      {
+        "type": "text",
+        "id": "ap_trust_3_text",
+        "label": "Elemento 3: texto",
+        "default": "3 meses"
+      },
+      {
+        "type": "header",
+        "content": "Medios de pago a mostrar"
+      },
+      {
+        "type": "checkbox",
+        "id": "ap_pay_mercadopago",
+        "label": "Mercado Pago",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "ap_pay_addi",
+        "label": "Addi",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "ap_pay_visa",
+        "label": "Visa",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "ap_pay_mastercard",
+        "label": "Mastercard",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "ap_pay_transfer",
+        "label": "Transferencia (WhatsApp)",
+        "default": true
+      }
+    ]
   }
 ]

@@ -1,0 +1,11 @@
+{%- comment -%}
+  ap-loop-video — video corto en loop, sin sonido, debajo de la barra de garantías.
+  Dato: metacampo artpro.video_loop (Archivo → Video). Vacío = no se muestra.
+  Recomendado: MP4, 3 a 8 segundos, formato cuadrado o 4:5, menos de 2 MB.
+{%- endcomment -%}
+{%- assign ap_video = product.metafields.artpro.video_loop.value -%}
+{%- if ap_video != blank and ap_video.media_type == 'video' -%}
+  <div class="ap-loop-video">
+    {{ ap_video | video_tag: autoplay: true, loop: true, muted: true, playsinline: true, controls: false, preload: 'metadata', image_size: '800x' }}
+  </div>
+{%- endif -%}

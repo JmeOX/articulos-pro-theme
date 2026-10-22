@@ -1,0 +1,25 @@
+{%- comment -%}
+  ap-whatsapp-button — botón secundario "Pedir por WhatsApp" con el producto y el paquete ya escritos.
+  Número: Configuración del tema → Artículos Pro. Sin número, no se muestra.
+{%- endcomment -%}
+{%- if settings.ap_whatsapp_number != blank -%}
+  {%- capture ap_wa_number -%}{% render 'ap-wa-number' %}{%- endcapture -%}
+  {%- assign ap_variant = product.selected_or_first_available_variant -%}
+  {%- capture ap_msg -%}Hola, quiero pedir: {{ product.title }}{% unless product.has_only_default_variant %} ({{ ap_variant.title }}){% endunless %}{%- endcapture -%}
+  <a class="ap-btn ap-btn--secondary ap-wa-btn"
+     href="https://wa.me/{{ ap_wa_number }}?text={{ ap_msg | url_encode }}"
+     data-base="https://wa.me/{{ ap_wa_number }}?text="
+     data-product="{{ product.title | escape }}"
+     target="_blank" rel="noopener">
+    <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.6-1.2A9 9 0 1 0 12 3z" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+    Pedir por WhatsApp
+  </a>
+  <script>
+    // Cuando cambia el paquete, actualiza el mensaje de WhatsApp
+    document.addEventListener('ap:pack-change', (e) => {
+      document.querySelectorAll('.ap-wa-btn').forEach((a) => {
+        a.href = a.dataset.base + encodeURIComponent('Hola, quiero pedir: ' + a.dataset.product + ' (' + e.detail.value + ')');
+      });
+    });
+  </script>
+{%- endif -%}

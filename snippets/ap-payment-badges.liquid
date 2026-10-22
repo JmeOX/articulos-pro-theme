@@ -1,0 +1,12 @@
+{%- comment -%}
+  ap-payment-badges — logos de medios de pago de Artículos Pro.
+  Cuáles se muestran: Configuración del tema → Artículos Pro → "Medios de pago a mostrar".
+  Uso: {% render 'ap-payment-badges' %}
+{%- endcomment -%}
+<ul class="ap-pay" aria-label="Medios de pago">
+  {%- if settings.ap_pay_mercadopago -%}<li class="ap-pay__item ap-pay__item--mp">Mercado Pago</li>{%- endif -%}
+  {%- if settings.ap_pay_addi -%}<li class="ap-pay__item ap-pay__item--addi">Addi</li>{%- endif -%}
+  {%- if settings.ap_pay_visa -%}<li class="ap-pay__item">VISA</li>{%- endif -%}
+  {%- if settings.ap_pay_mastercard -%}<li class="ap-pay__item">Mastercard</li>{%- endif -%}
+  {%- if settings.ap_pay_transfer -%}<li class="ap-pay__item">Transferencia</li>{%- endif -%}
+</ul>

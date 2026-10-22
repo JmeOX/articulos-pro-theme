@@ -1,0 +1,84 @@
+/*
+  ap-tokens.css — Tokens de marca de Artículos Pro
+  ------------------------------------------------
+  Qué es: las variables CSS del manual de marca (colores, radios, sombra, fuente).
+  Dónde se carga: layout/theme.liquid, justo después de base.css (por eso puede
+  sobrescribir variables de Dawn).
+  Convención: todas empiezan con --ap- para no chocar con las variables de Dawn.
+*/
+
+:root {
+  /* Colores (tema claro) */
+  --ap-surface: #FFFFFF;      /* fondo principal */
+  --ap-surface-alt: #F6F4F1;  /* fondo alterno de secciones */
+  --ap-ink: #111111;          /* texto principal y trazo del logo */
+  --ap-ink-muted: #5C5853;    /* texto secundario, precio tachado */
+  --ap-line: #E6E2DC;         /* bordes y separadores */
+  --ap-orange: #ED7A07;       /* naranja del asa: botón principal, sellos */
+  --ap-on-brand: #111111;     /* texto sobre naranja (nunca blanco) */
+  --ap-orange-text: #A85200;  /* naranja para texto sobre fondo claro */
+  --ap-orange-soft: #FDEEDD;  /* tinte: cajas de objeción, CTA de WhatsApp */
+  --ap-success: #1E7A45;      /* solo estados: "Compra verificada" */
+
+  /* Radios */
+  --ap-radius-sm: 4px;        /* etiquetas, logos de pago */
+  --ap-radius-md: 8px;        /* botones, inputs, pestañas */
+  --ap-radius-lg: 12px;       /* tarjetas, imágenes, opciones de paquete */
+
+  /* Sombra */
+  --ap-shadow-card: 0 4px 18px rgba(17, 17, 17, 0.07);
+
+  /* Tipografía */
+  --ap-font: "Hanken Grotesk", "Helvetica Neue", Arial, sans-serif;
+
+  /* Le decimos a Dawn que use nuestra fuente en todo el tema */
+  --font-body-family: var(--ap-font);
+  --font-heading-family: var(--ap-font);
+  --font-heading-weight: 800;  /* títulos en negrita, como el mockup */
+}
+
+/* ---------- Utilidades de marca (las usan nuestras secciones ap-*) ---------- */
+
+/* Etiqueta naranja encima de los títulos: "— CÓMO FUNCIONA" */
+.ap-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  font-size: 1.2rem;              /* Dawn usa 1rem = 10px */
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ap-orange-text);
+}
+.ap-eyebrow::before {
+  content: "";
+  width: 18px;
+  height: 2px;
+  background: var(--ap-orange);
+}
+
+/* Botones */
+.ap-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 22px;
+  border: 2px solid transparent;
+  border-radius: var(--ap-radius-md);
+  font: 700 1.6rem var(--ap-font);
+  text-decoration: none;
+  cursor: pointer;
+}
+.ap-btn--primary { background: var(--ap-orange); color: var(--ap-on-brand); }
+.ap-btn--secondary { background: transparent; color: var(--ap-ink); border-color: var(--ap-ink); }
+.ap-btn:focus-visible { outline: 2px solid var(--ap-orange); outline-offset: 2px; }
+
+/* Tarjeta: borde fino + sombra suave + radio 12px */
+.ap-card {
+  background: var(--ap-surface);
+  border: 1px solid var(--ap-line);
+  border-radius: var(--ap-radius-lg);
+  box-shadow: var(--ap-shadow-card);
+}

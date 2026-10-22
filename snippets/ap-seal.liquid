@@ -1,0 +1,14 @@
+{%- comment -%}
+  ap-seal — sello circular sobre la foto principal (ej. "Homologado CRC").
+  Dato: metacampo artpro.sello (texto de una línea). Vacío = no se muestra.
+  Escribe el texto con | para partirlo en líneas: "Homologado|CRC|Colombia" (la del medio va grande).
+{%- endcomment -%}
+{%- assign ap_seal = product.metafields.artpro.sello.value -%}
+{%- if ap_seal != blank -%}
+  {%- assign ap_lines = ap_seal | split: '|' -%}
+  <div class="ap-seal" aria-label="{{ ap_lines | join: ' ' | escape }}">
+    {%- for line in ap_lines -%}
+      {%- if ap_lines.size == 3 and forloop.index == 2 -%}<b>{{ line | strip }}</b>{%- else -%}<span>{{ line | strip }}</span>{%- endif -%}
+    {%- endfor -%}
+  </div>
+{%- endif -%}

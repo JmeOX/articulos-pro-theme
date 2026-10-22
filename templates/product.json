@@ -12,19 +12,8 @@
     "main": {
       "type": "main-product",
       "blocks": {
-        "vendor": {
-          "type": "text",
-          "settings": {
-            "text": "{{ product.vendor }}",
-            "text_style": "uppercase"
-          }
-        },
         "title": {
           "type": "title",
-          "settings": {}
-        },
-        "price": {
-          "type": "price",
           "settings": {}
         },
         "variant_picker": {
@@ -34,14 +23,10 @@
             "swatch_shape": "circle"
           }
         },
-        "quantity_selector": {
-          "type": "quantity_selector",
-          "settings": {}
-        },
         "buy_buttons": {
           "type": "buy_buttons",
           "settings": {
-            "show_dynamic_checkout": true,
+            "show_dynamic_checkout": false,
             "show_gift_card_recipient": true
           }
         },
@@ -49,22 +34,47 @@
           "type": "description",
           "settings": {}
         },
-        "share": {
-          "type": "share",
-          "settings": {
-            "share_label": "Share"
-          }
+        "ap_benefits": {
+          "type": "ap_benefits",
+          "settings": {}
+        },
+        "ap_specs": {
+          "type": "ap_specs",
+          "settings": {}
+        },
+        "ap_pack_picker": {
+          "type": "ap_pack_picker",
+          "settings": {}
+        },
+        "ap_whatsapp": {
+          "type": "ap_whatsapp",
+          "settings": {}
+        },
+        "ap_trust": {
+          "type": "ap_trust",
+          "settings": {}
+        },
+        "ap_price": {
+          "type": "ap_price",
+          "settings": {}
+        },
+        "ap_loop_video": {
+          "type": "ap_loop_video",
+          "settings": {}
         }
       },
       "block_order": [
-        "vendor",
         "title",
-        "price",
+        "ap_price",
+        "ap_benefits",
+        "ap_specs",
+        "ap_pack_picker",
         "variant_picker",
-        "quantity_selector",
         "buy_buttons",
-        "description",
-        "share"
+        "ap_whatsapp",
+        "ap_trust",
+        "ap_loop_video",
+        "description"
       ],
       "settings": {
         "enable_sticky_info": true,
@@ -72,8 +82,8 @@
         "media_size": "large",
         "constrain_to_viewport": true,
         "media_fit": "contain",
-        "gallery_layout": "stacked",
-        "mobile_thumbnails": "hide",
+        "gallery_layout": "thumbnail_slider",
+        "mobile_thumbnails": "show",
         "media_position": "left",
         "image_zoom": "lightbox",
         "hide_variants": true,

@@ -1,0 +1,25 @@
+{%- comment -%}
+  ap-specs — mini tabla de datos clave (2 columnas).
+  Dato: metacampo artpro.datos_clave (lista de texto de una línea), cada línea en formato "Etiqueta: Valor".
+  Ej: "Conexión: 4G LTE". Vacío = no se muestra.
+{%- endcomment -%}
+{%- comment -%} Acepta lista de valores (recomendado) o un solo texto separado por ';' {%- endcomment -%}
+{%- assign ap_mf = product.metafields.artpro.datos_clave -%}
+{%- if ap_mf.type contains 'list' -%}
+  {%- assign ap_items = ap_mf.value -%}
+{%- else -%}
+  {%- assign ap_items = ap_mf.value | split: ';' -%}
+{%- endif -%}
+{%- if ap_items != blank -%}
+  <dl class="ap-specs">
+    {%- for item in ap_items -%}
+      {%- assign item = item | strip -%}
+      {%- if item == blank -%}{%- continue -%}{%- endif -%}
+      {%- assign ap_parts = item | split: ':' -%}
+      <div>
+        <dt>{{ ap_parts.first | strip }}</dt>
+        <dd>{{ item | remove_first: ap_parts.first | remove_first: ':' | strip }}</dd>
+      </div>
+    {%- endfor -%}
+  </dl>
+{%- endif -%}

@@ -1,0 +1,24 @@
+{%- comment -%}
+  ap-footer-info — franja bajo el footer: horario, contacto y medios de pago.
+  Datos: Configuración del tema → Artículos Pro.
+{%- endcomment -%}
+<div class="ap-footer-info color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width ap-footer-info__inner">
+    <div class="ap-footer-info__contact">
+      {%- if settings.ap_hours != blank -%}<p><strong>Horario:</strong> {{ settings.ap_hours }}</p>{%- endif -%}
+      {%- if settings.ap_store_email != blank -%}<p><strong>Correo:</strong> {{ settings.ap_store_email }}</p>{%- endif -%}
+    </div>
+    {% render 'ap-payment-badges' %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "AP · Info del footer",
+  "class": "ap-footer-info-section",
+  "enabled_on": { "groups": ["footer"] },
+  "settings": [
+    { "type": "color_scheme", "id": "color_scheme", "label": "Esquema de color", "default": "scheme-4" }
+  ]
+}
+{% endschema %}

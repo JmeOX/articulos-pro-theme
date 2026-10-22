@@ -1,0 +1,17 @@
+{%- comment -%}
+  ap-whatsapp-float — botón flotante de WhatsApp en todas las páginas.
+  Número y mensaje: Configuración del tema → Artículos Pro. Si no hay número, no se muestra.
+  En la página de producto, el mensaje incluye el nombre del producto.
+{%- endcomment -%}
+{%- if settings.ap_whatsapp_number != blank -%}
+  {%- capture ap_wa_number -%}{% render 'ap-wa-number' %}{%- endcapture -%}
+  {%- liquid
+    assign ap_wa_text = settings.ap_whatsapp_message
+    if template.name == 'product'
+      assign ap_wa_text = ap_wa_text | append: product.title
+    endif
+  -%}
+  <a class="ap-wa-float" href="https://wa.me/{{ ap_wa_number }}?text={{ ap_wa_text | url_encode }}" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">
+    <svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.6-1.2A9 9 0 1 0 12 3z" fill="none" stroke="#fff" stroke-width="2"/></svg>
+  </a>
+{%- endif -%}

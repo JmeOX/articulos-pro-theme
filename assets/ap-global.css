@@ -1,0 +1,90 @@
+/* ap-global.css — estilos de los elementos globales de Artículos Pro
+   (barra de anuncio, header, footer, botón de WhatsApp, logos de pago). */
+
+/* Barra de anuncio: texto en negrita sobre el esquema negro */
+.announcement-bar__message { font-weight: 600; letter-spacing: 0.02em; }
+
+/* Header: menú en negrita con subrayado naranja en hover y en la página activa */
+.header__menu-item { font-weight: 600; }
+.header__menu-item span { text-decoration: none !important; border-bottom: 2px solid transparent; padding-bottom: 2px; }
+.header__menu-item:hover span,
+.header__active-menu-item { border-bottom-color: var(--ap-orange) !important; }
+
+/* Footer: títulos de columna como etiquetas en mayúsculas */
+.footer-block__heading { font-size: 1.2rem; letter-spacing: 0.08em; text-transform: uppercase; }
+
+/* Franja de info bajo el footer */
+.ap-footer-info__inner { display: flex; flex-wrap: wrap; gap: 1.6rem; justify-content: space-between; align-items: center; padding-block: 1.6rem 2.4rem; border-top: 1px solid rgba(255,255,255,.15); font-size: 1.3rem; }
+.ap-footer-info__contact p { margin: 0.2rem 0; }
+
+/* Logos de pago (texto en recuadro; se pueden cambiar por imágenes después) */
+.ap-pay { display: flex; flex-wrap: wrap; gap: 0.6rem; list-style: none; margin: 0; padding: 0; }
+.ap-pay__item { border: 1px solid currentColor; opacity: 0.85; border-radius: var(--ap-radius-sm); padding: 0.3rem 0.7rem; font-size: 1.1rem; font-weight: 800; }
+
+/* Botón flotante de WhatsApp */
+.ap-wa-float { position: fixed; right: 16px; bottom: calc(20px + env(safe-area-inset-bottom, 0px)); z-index: 30; width: 56px; height: 56px; border-radius: 50%; background: #25D366; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,.18); }
+.ap-wa-float:focus-visible { outline: 2px solid var(--ap-orange); outline-offset: 3px; }
+
+/* ===================== Página de producto (fase 4a) ===================== */
+.product__title h1 { font-size: clamp(2.6rem, 3vw, 3.4rem); line-height: 1.15; letter-spacing: -0.02em; }
+.product .price { font-weight: 800; }
+.product .price-item--sale, .product .price-item--regular { font-size: 2.8rem; }
+.product .price__sale s .price-item, .product s.price-item { font-size: 1.6rem; font-weight: 400; color: var(--ap-ink-muted); }
+
+/* Beneficios con check naranja */
+.ap-checks { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.8rem; font-size: 1.5rem; }
+.ap-checks li { display: flex; gap: 1rem; align-items: flex-start; }
+.ap-checks li::before { content: ""; flex-shrink: 0; width: 12px; height: 7px; margin-top: 0.6rem; border-left: 2.5px solid var(--ap-orange); border-bottom: 2.5px solid var(--ap-orange); transform: rotate(-45deg); }
+
+/* Datos clave: mini tabla 2 columnas con línea negra arriba */
+.ap-specs { display: grid; grid-template-columns: 1fr 1fr; margin: 0; border-top: 2px solid var(--ap-ink); }
+.ap-specs div { padding: 1rem 1rem 1rem 0; border-bottom: 1px solid var(--ap-line); }
+.ap-specs div:nth-child(even) { padding-left: 1.2rem; border-left: 1px solid var(--ap-line); }
+.ap-specs dt { font-size: 1.2rem; color: var(--ap-ink-muted); }
+.ap-specs dd { margin: 0; font-size: 1.5rem; font-weight: 700; }
+
+/* Tarjetas de paquete; el selector de Dawn queda oculto pero sigue funcionando */
+.product__info-container:has(.ap-pack) variant-selects { display: none; }
+.ap-pack { display: grid; gap: 0.8rem; }
+.ap-pack__label { margin: 0; font-size: 1.3rem; font-weight: 700; }
+.ap-pack__opt { display: grid; grid-template-columns: 22px 1fr auto; gap: 1rem; align-items: center; width: 100%; padding: 1.2rem 1.4rem; text-align: left; font: inherit; color: var(--ap-ink); background: var(--ap-surface); border: 1.5px solid var(--ap-line); border-radius: var(--ap-radius-lg); cursor: pointer; }
+.ap-pack__opt.is-on { border: 2px solid var(--ap-ink); box-shadow: var(--ap-shadow-card); }
+.ap-pack__opt:disabled { opacity: 0.5; cursor: not-allowed; }
+.ap-pack__radio { width: 18px; height: 18px; border-radius: 50%; border: 2px solid var(--ap-line); }
+.ap-pack__opt.is-on .ap-pack__radio { border: 5px solid var(--ap-orange); }
+.ap-pack__name { font-weight: 700; font-size: 1.5rem; }
+.ap-pack__price { font-weight: 800; text-align: right; font-size: 1.5rem; }
+.ap-pack__price s { display: block; font-weight: 400; font-size: 1.2rem; color: var(--ap-ink-muted); }
+
+/* Botón WhatsApp a lo ancho, igual que "Agregar al carrito" */
+.ap-wa-btn { width: 100%; }
+.product-form__submit { border-radius: var(--ap-radius-md); font-weight: 700; }
+/* Dawn limita los botones a 44rem y los deja alineados a la izquierda; los dejamos a todo el ancho
+   para que queden alineados con las tarjetas de paquete, WhatsApp y la barra de garantías */
+.product .product-form__buttons { max-width: none; }
+.product .product-form__submit { width: 100%; margin-inline: 0; }
+
+/* Pagos + barra de 3 garantías */
+.ap-trust-wrap { display: grid; gap: 1.2rem; }
+.ap-trust-wrap .ap-pay { justify-content: center; color: var(--ap-ink-muted); }
+.ap-trust3 { display: grid; grid-template-columns: repeat(3, 1fr); text-align: center; font-size: 1.2rem; font-weight: 600; background: var(--ap-surface-alt); border: 1px solid var(--ap-line); border-radius: var(--ap-radius-md); }
+.ap-trust3 > div { padding: 1rem 0.6rem; }
+.ap-trust3 > div + div { border-left: 1px solid var(--ap-line); }
+.ap-trust3 b { display: block; font-size: 1.05rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ap-orange-text); }
+
+/* ===================== Ajustes al mockup (precio, sello, galería) ===================== */
+.ap-price { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.6rem 1rem; }
+.ap-price__now { font-size: 3rem; font-weight: 800; letter-spacing: -0.02em; line-height: 1.1; }
+.ap-price__old { font-size: 1.6rem; color: var(--ap-ink-muted); }
+.ap-price__save { align-self: center; background: var(--ap-orange); color: var(--ap-on-brand); font-size: 1.1rem; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.4rem 0.8rem; border-radius: var(--ap-radius-sm); }
+
+.product__media-wrapper { position: relative; }
+.ap-seal { position: absolute; z-index: 2; top: 1.4rem; left: 1.4rem; width: 92px; height: 92px; border-radius: 50%; border: 2px solid var(--ap-ink); background: var(--ap-orange); color: var(--ap-on-brand); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; font-size: 0.8rem; font-weight: 800; letter-spacing: 0.04em; line-height: 1.15; text-transform: uppercase; pointer-events: none; }
+.ap-seal b { font-size: 1.5rem; letter-spacing: 0; }
+
+/* Título del producto más grande y en negrita, como el mockup */
+.product__title h1 { font-weight: 800; }
+
+/* Video en loop bajo la barra de garantías */
+.ap-loop-video { border-radius: var(--ap-radius-lg); overflow: hidden; background: var(--ap-surface-alt); }
+.ap-loop-video video { display: block; width: 100%; height: auto; }

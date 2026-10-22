@@ -1,0 +1,13 @@
+{%- comment -%}
+  ap-price — precio de Artículos Pro: precio actual grande, precio anterior tachado y etiqueta "Ahorras $X".
+  El contenedor usa id="price-{{ section_id }}" igual que Dawn, así Dawn lo actualiza solo
+  cuando cambia la variante (paquete).
+{%- endcomment -%}
+{%- assign ap_v = product.selected_or_first_available_variant -%}
+<div id="price-{{ section_id }}" class="ap-price" role="status">
+  <span class="ap-price__now">{{ ap_v.price | money_without_trailing_zeros }}</span>
+  {%- if ap_v.compare_at_price > ap_v.price -%}
+    <s class="ap-price__old">{{ ap_v.compare_at_price | money_without_trailing_zeros }}</s>
+    <span class="ap-price__save">Ahorras {{ ap_v.compare_at_price | minus: ap_v.price | money_without_trailing_zeros }}</span>
+  {%- endif -%}
+</div>

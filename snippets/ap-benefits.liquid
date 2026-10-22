@@ -1,0 +1,16 @@
+{%- comment -%}
+  ap-benefits — lista de beneficios con check naranja.
+  Dato: metacampo del producto artpro.beneficios (lista de texto de una línea). Vacío = no se muestra.
+{%- endcomment -%}
+{%- comment -%} Acepta lista de valores (recomendado) o un solo texto separado por ';' {%- endcomment -%}
+{%- assign ap_mf = product.metafields.artpro.beneficios -%}
+{%- if ap_mf.type contains 'list' -%}
+  {%- assign ap_items = ap_mf.value -%}
+{%- else -%}
+  {%- assign ap_items = ap_mf.value | split: ';' -%}
+{%- endif -%}
+{%- if ap_items != blank -%}
+  <ul class="ap-checks">
+    {%- for item in ap_items -%}{%- assign item = item | strip -%}{%- if item != blank -%}<li>{{ item }}</li>{%- endif -%}{%- endfor -%}
+  </ul>
+{%- endif -%}

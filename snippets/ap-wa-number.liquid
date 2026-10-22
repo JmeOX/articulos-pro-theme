@@ -1,0 +1,8 @@
+{%- comment -%}
+  ap-wa-number — imprime el número de WhatsApp listo para wa.me (solo dígitos, con indicativo).
+  Si el número guardado es un celular colombiano de 10 dígitos (3xxxxxxxxx), le agrega 57.
+  Uso: {%- capture n -%}{% render 'ap-wa-number' %}{%- endcapture -%}
+{%- endcomment -%}
+{%- assign ap_n = settings.ap_whatsapp_number | remove: '+' | remove: ' ' | remove: '-' -%}
+{%- if ap_n.size == 10 and ap_n.first == '3' -%}{%- assign ap_n = '57' | append: ap_n -%}{%- endif -%}
+{{- ap_n -}}

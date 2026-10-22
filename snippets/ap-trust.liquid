@@ -1,0 +1,12 @@
+{%- comment -%}
+  ap-trust — logos de medios de pago + barra de 3 garantías bajo los botones de compra.
+  Textos: Configuración del tema → Artículos Pro → "Barra de confianza".
+{%- endcomment -%}
+<div class="ap-trust-wrap">
+  {% render 'ap-payment-badges' %}
+  <div class="ap-trust3">
+    <div><b>{{ settings.ap_trust_1_label }}</b>{{ settings.ap_trust_1_text }}</div>
+    <div><b>{{ settings.ap_trust_2_label }}</b>{{ settings.ap_trust_2_text }}</div>
+    <div><b>{{ settings.ap_trust_3_label }}</b>{{ settings.ap_trust_3_text }}</div>
+  </div>
+</div>
