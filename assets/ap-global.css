@@ -235,3 +235,24 @@ cart-drawer .ap-pay { justify-content: center; color: var(--ap-ink-muted); }
 /* En líneas con paquete, ocultar "Paquete: X" (ya lo muestran los botones) y dar aire al banner */
 cart-drawer .cart-item:has(.ap-cart-pack) .product-option { display: none; }
 cart-drawer .ap-cart-ship { margin-bottom: 0.8rem; }
+
+/* ===================== Tarjeta de producto y colección (fase 6a) ===================== */
+.card__inner { position: relative; }
+.ap-card-seal { position: absolute; z-index: 2; top: 0.8rem; left: 0.8rem; background: var(--ap-orange); color: var(--ap-on-brand); border: 1.5px solid var(--ap-ink); border-radius: 999px; font-size: 0.95rem; font-weight: 800; letter-spacing: 0.03em; padding: 0.2rem 0.8rem; pointer-events: none; }
+.ap-card-type { font-size: 1.15rem; color: var(--ap-ink-muted); margin-bottom: 0.2rem; }
+.card__heading { font-weight: 600; }
+.card-information .price { font-weight: 800; }
+.card .badge { border-radius: var(--ap-radius-sm); font-weight: 800; }
+.collection-hero .ap-eyebrow { margin-bottom: 0.6rem; }
+.collection-hero__title { font-weight: 800; letter-spacing: -0.02em; }
+.ap-chips-wrap { padding-top: 0.4rem; }
+.ap-chips { display: flex; gap: 0.8rem; overflow-x: auto; padding-bottom: 0.4rem; }
+.ap-chip { flex-shrink: 0; font-weight: 700; font-size: 1.3rem; padding: 0.8rem 1.4rem; border-radius: 999px; border: 1.5px solid var(--ap-line); text-decoration: none; color: var(--ap-ink); background: var(--ap-surface); }
+.ap-chip.is-on, .ap-chip:hover { background: var(--ap-ink); border-color: var(--ap-ink); color: #fff; }
+.ap-sec--tight { padding-block: 2.4rem 4.4rem; }
+.ap-trust4 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; background: var(--ap-line); border: 1px solid var(--ap-line); border-radius: var(--ap-radius-lg); overflow: hidden; }
+.ap-trust4__item { background: var(--ap-surface); color: var(--ap-ink); padding: 1.6rem 1.2rem; display: flex; gap: 1rem; align-items: flex-start; font-size: 1.3rem; }
+.ap-trust4__item b { display: block; font-size: 1.4rem; }
+.ap-trust4__item span { color: var(--ap-ink-muted); }
+.ap-ic { width: 24px; height: 24px; flex-shrink: 0; stroke: var(--ap-ink); fill: none; stroke-width: 2; stroke-linecap: square; }
+@media (min-width: 990px) { .ap-trust4 { grid-template-columns: repeat(4, 1fr); } .ap-trust4__item { padding: 2rem; } }

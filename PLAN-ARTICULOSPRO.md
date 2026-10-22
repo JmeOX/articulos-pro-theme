@@ -38,7 +38,9 @@ Metaobjetos: Dato, Paso, Escenario, Punto, Comparativa, Respaldo, Pregunta. Secc
 - Metacampos artpro.* creados vía conector de Shopify (graphql). GPS con contenido base; faltan: objecion_respuesta, videos, detalle_imagen, video_loop, specs ⚠️: secciones de contenido + último llamado + barra fija
 - Nota: theme dev a veces sube la plantilla antes que la sección nueva → 'touch' a la sección y luego a la plantilla.
 - [x] Fase 5: carrito lateral (cart-drawer.liquid + ap-cart.js: banner envío, selector de paquete, regla 1 línea por producto, resumen con ahorro, Finalizar por WhatsApp, pagos, complemento artpro.complemento)
-- [ ] Fase 6: colección, home, páginas informativas, búsqueda, 404
+- [x] Fase 6a: tarjeta de producto (sello, ahorro −$X, tipo), colección (etiqueta, botones ap-collection-chips, franja ap-trust-strip, sin filtros). Colecciones Tecnología/Hogar/Mascotas creadas y publicadas; menú principal actualizado.
+- [ ] Fase 6b: home · 6c: páginas informativas, búsqueda, 404
+- Nota: los nombres de sección (schema name) deben tener máx. 25 caracteres.
 - [ ] Fase 7: apps, pruebas, publicación
 
 ## Datos pendientes

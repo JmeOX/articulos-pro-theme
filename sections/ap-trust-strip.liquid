@@ -1,0 +1,54 @@
+{%- comment -%}
+  ap-trust-strip — franja de 4 garantías con ícono (envío, pago, garantía, soporte).
+  Cada elemento es un bloque editable desde el editor.
+{%- endcomment -%}
+<div class="ap-sec ap-sec--tight color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width">
+    <div class="ap-trust4">
+      {%- for block in section.blocks -%}
+        <div class="ap-trust4__item" {{ block.shopify_attributes }}>
+          <svg class="ap-ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            {%- case block.settings.icon -%}
+              {%- when 'truck' -%}<path d="M2 7h12v10H2zM14 10h4l4 4v3h-8z"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="18" r="2"/>
+              {%- when 'card' -%}<path d="M3 6h18v12H3zM3 10h18"/>
+              {%- when 'shield' -%}<path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/>
+              {%- else -%}<path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.6-1.2A9 9 0 1 0 12 3z"/>
+            {%- endcase -%}
+          </svg>
+          <div><b>{{ block.settings.title }}</b><span>{{ block.settings.text }}</span></div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "AP · Franja de confianza",
+  "max_blocks": 4,
+  "settings": [
+    { "type": "color_scheme", "id": "color_scheme", "label": "Esquema de color", "default": "scheme-1" }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Elemento",
+      "settings": [
+        { "type": "select", "id": "icon", "label": "Ícono", "default": "truck", "options": [
+          { "value": "truck", "label": "Camión" }, { "value": "card", "label": "Tarjeta" },
+          { "value": "shield", "label": "Escudo" }, { "value": "chat", "label": "Chat" } ] },
+        { "type": "text", "id": "title", "label": "Título", "default": "Envío gratis" },
+        { "type": "text", "id": "text", "label": "Texto", "default": "3 a 5 días hábiles" }
+      ]
+    }
+  ],
+  "presets": [{
+    "name": "AP · Franja de confianza",
+    "blocks": [
+      { "type": "item", "settings": { "icon": "truck", "title": "Envío gratis", "text": "3 a 5 días hábiles" } },
+      { "type": "item", "settings": { "icon": "card", "title": "Pago seguro", "text": "Mercado Pago, Addi, tarjeta" } },
+      { "type": "item", "settings": { "icon": "shield", "title": "Garantía", "text": "3 meses en todos los productos" } },
+      { "type": "item", "settings": { "icon": "chat", "title": "Soporte", "text": "Por WhatsApp, antes y después" } }
+    ]
+  }]
+}
+{% endschema %}

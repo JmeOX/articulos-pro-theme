@@ -1,0 +1,9 @@
+{%- comment -%}
+  ap-card-seal — sello pequeño sobre la foto de la tarjeta de producto (usa artpro.sello).
+  "Homologado|CRC|Colombia" se muestra como "Homologado CRC".
+{%- endcomment -%}
+{%- assign ap_seal = product.metafields.artpro.sello.value -%}
+{%- if ap_seal != blank -%}
+  {%- assign ap_lines = ap_seal | split: '|' -%}
+  <span class="ap-card-seal">{{ ap_lines[0] | strip }}{% if ap_lines[1] %} {{ ap_lines[1] | strip }}{% endif %}</span>
+{%- endif -%}

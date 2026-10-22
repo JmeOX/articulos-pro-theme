@@ -1,0 +1,25 @@
+{%- comment -%}
+  ap-collection-chips — botones horizontales para saltar entre colecciones.
+  Usa un menú (por defecto el principal) y muestra solo los enlaces a colecciones.
+{%- endcomment -%}
+{%- assign ap_menu = linklists[section.settings.menu] -%}
+{%- if ap_menu.links.size > 0 -%}
+<div class="page-width ap-chips-wrap">
+  <nav class="ap-chips" aria-label="Colecciones">
+    {%- for link in ap_menu.links -%}
+      {%- if link.type == 'collection_link' or link.type == 'catalog_link' or link.type == 'collections_link' -%}
+        <a class="ap-chip{% if link.active or link.current %} is-on{% endif %}" href="{{ link.url }}">{{ link.title }}</a>
+      {%- endif -%}
+    {%- endfor -%}
+  </nav>
+</div>
+{%- endif -%}
+{% schema %}
+{
+  "name": "AP · Colecciones",
+  "settings": [
+    { "type": "link_list", "id": "menu", "label": "Menú", "default": "main-menu" }
+  ],
+  "presets": [{ "name": "AP · Colecciones" }]
+}
+{% endschema %}
