@@ -14,3 +14,11 @@
     </button>
   {%- endfor -%}
 </div>
+{%- comment -%} Botón para eliminar la línea: usa el mismo componente de Dawn (cart-remove-button) {%- endcomment -%}
+<input type="hidden" id="Drawer-quantity-{{ item.index | plus: 1 }}" value="{{ item.quantity }}" data-quantity-variant-id="{{ item.variant.id }}" data-quantity-line-key="{{ item.key }}">
+<cart-remove-button id="CartDrawer-Remove-{{ item.index | plus: 1 }}" data-index="{{ item.index | plus: 1 }}">
+  <button type="button" class="ap-cart-remove" aria-label="{{ 'sections.cart.remove_title' | t: title: item.title | escape }}" data-variant-id="{{ item.variant.id }}">
+    <span class="svg-wrapper" aria-hidden="true">{{- 'icon-remove.svg' | inline_asset_content -}}</span>
+    Eliminar
+  </button>
+</cart-remove-button>
