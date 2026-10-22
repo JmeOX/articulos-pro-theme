@@ -34,9 +34,10 @@ Metaobjetos: Dato, Paso, Escenario, Punto, Comparativa, Respaldo, Pregunta. Secc
 - [x] Fase 4a: bloque de compra (bloques ap_* en main-product: paquetes, beneficios, datos clave, WhatsApp, pagos/garantías; carrito tipo drawer)
 - [x] Ajustes 4a: precio ap_price (Ahorras $X), sello artpro.sello (naranja), galería con miniaturas, video en loop artpro.video_loop tras garantías
 - [x] Fase 4b: secciones ap-how-it-works, ap-scenarios, ap-videos, ap-detail, ap-objection, ap-compare, ap-backing, ap-warranty, ap-faq (metacampos con listas 'A | B | C', no metaobjetos)
-- [ ] Fase 4c: secciones de contenido + último llamado + barra fija
+- [x] Fase 4c: ap-final-cta (último llamado + barra fija; botones hacen clic en el botón real de Dawn). Videos de clientes con botón de play propio.
+- Metacampos artpro.* creados vía conector de Shopify (graphql). GPS con contenido base; faltan: objecion_respuesta, videos, detalle_imagen, video_loop, specs ⚠️: secciones de contenido + último llamado + barra fija
 - Nota: theme dev a veces sube la plantilla antes que la sección nueva → 'touch' a la sección y luego a la plantilla.
-- [ ] Fase 5: carrito lateral
+- [ ] Fase 5: carrito lateral (hoy: drawer de Dawn sin personalizar)
 - [ ] Fase 6: colección, home, páginas informativas, búsqueda, 404
 - [ ] Fase 7: apps, pruebas, publicación
 

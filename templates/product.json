@@ -152,6 +152,10 @@
     "ap-faq": {
       "type": "ap-faq",
       "settings": {}
+    },
+    "ap-final-cta": {
+      "type": "ap-final-cta",
+      "settings": {}
     }
   },
   "order": [
@@ -165,6 +169,7 @@
     "ap-backing",
     "ap-warranty",
     "ap-faq",
+    "ap-final-cta",
     "disclosures",
     "related-products"
   ]

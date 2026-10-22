@@ -1,0 +1,96 @@
+{%- comment -%}
+  ap-final-cta — último llamado al final de la página de producto + barra fija de compra.
+  - Último llamado: foto, nombre, precio y los dos botones (comprar / WhatsApp).
+  - Barra fija: aparece abajo cuando el botón principal sale de la pantalla y se oculta
+    cuando el último llamado está visible (para no repetir botones).
+  Los botones "Comprar ahora" hacen clic en el botón real de Dawn, así se agrega
+  el paquete elegido y se abre el carrito lateral.
+{%- endcomment -%}
+{%- assign ap_v = product.selected_or_first_available_variant -%}
+<div class="ap-sec color-{{ section.settings.color_scheme }} gradient" data-ap-final>
+  <div class="page-width ap-final">
+    <div class="ap-final__prod">
+      {%- if product.featured_media -%}
+        {{ product.featured_media | image_url: width: 240 | image_tag: class: 'ap-final__img', loading: 'lazy', alt: product.title }}
+      {%- endif -%}
+      <div>
+        <p class="ap-final__title">{{ product.title }}</p>
+        <p class="ap-final__price" data-ap-price-mirror>{{ ap_v.price | money_without_trailing_zeros }}</p>
+      </div>
+    </div>
+    <button type="button" class="ap-btn ap-btn--primary ap-final__buy" data-ap-buy>{{ section.settings.button_label }}</button>
+    {% render 'ap-whatsapp-button', product: product %}
+  </div>
+</div>
+
+{%- if section.settings.show_sticky -%}
+  <div class="ap-sticky" data-ap-sticky aria-hidden="true">
+    <div class="page-width ap-sticky__in">
+      <div class="ap-sticky__info">
+        <b>{{ product.title }}</b>
+        <small data-ap-price-mirror>{{ ap_v.price | money_without_trailing_zeros }}</small>
+      </div>
+      <button type="button" class="ap-btn ap-btn--primary" data-ap-buy tabindex="-1">{{ section.settings.button_label }}</button>
+    </div>
+  </div>
+{%- endif -%}
+
+<script>
+  (() => {
+    const mainBtn = () => document.querySelector('product-form .product-form__submit');
+    const priceNow = () => document.querySelector('.ap-price__now');
+
+    // "Comprar ahora" del último llamado y de la barra fija → botón real de Dawn
+    document.querySelectorAll('[data-ap-buy]').forEach((b) => b.addEventListener('click', () => {
+      const btn = mainBtn();
+      if (btn && !btn.disabled) btn.click();
+      else document.getElementById('MainContent').scrollIntoView({ behavior: 'smooth' });
+    }));
+
+    // Mantener el precio igual al del paquete elegido
+    const syncPrice = () => {
+      const p = priceNow();
+      if (p) document.querySelectorAll('[data-ap-price-mirror]').forEach((el) => { el.textContent = p.textContent.trim(); });
+    };
+    document.addEventListener('ap:pack-change', () => setTimeout(syncPrice, 1200));
+
+    // Mostrar la barra fija solo entre el botón principal y el último llamado
+    const sticky = document.querySelector('[data-ap-sticky]');
+    const final = document.querySelector('[data-ap-final]');
+    if (!sticky) return;
+    let ticking = false;
+    const update = () => {
+      ticking = false;
+      const btn = mainBtn();
+      const vh = window.innerHeight;
+      // Botón principal ya pasó (quedó arriba de la pantalla)
+      const passedMain = btn ? btn.getBoundingClientRect().bottom < 0 : false;
+      // Último llamado visible en pantalla
+      const fr = final ? final.getBoundingClientRect() : null;
+      const finalVisible = fr ? fr.top < vh && fr.bottom > 0 : false;
+      const show = passedMain && !finalVisible;
+      if (show === sticky.classList.contains('is-on')) return;
+      sticky.classList.toggle('is-on', show);
+      sticky.setAttribute('aria-hidden', String(!show));
+      sticky.querySelector('button').tabIndex = show ? 0 : -1;
+      document.body.classList.toggle('ap-sticky-on', show);
+      if (show) syncPrice();
+    };
+    window.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "AP · Último llamado",
+  "enabled_on": { "templates": ["product"] },
+  "settings": [
+    { "type": "text", "id": "button_label", "label": "Texto del botón", "default": "Comprar ahora" },
+    { "type": "checkbox", "id": "show_sticky", "label": "Mostrar barra fija de compra en el celular y escritorio", "default": true },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Esquema de color", "default": "scheme-2" }
+  ],
+  "presets": [{ "name": "AP · Último llamado" }]
+}
+{% endschema %}
