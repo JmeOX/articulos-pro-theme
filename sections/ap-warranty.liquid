@@ -1,0 +1,32 @@
+{%- comment -%}
+  ap-warranty — meses de garantía en grande + condiciones.
+  Datos: meses = Configuración del tema → Artículos Pro; puntos = artpro.garantia_puntos (lista)
+  o, si está vacío, los puntos por defecto de esta sección.
+{%- endcomment -%}
+{%- assign ap_mf = product.metafields.artpro.garantia_puntos -%}
+{%- if ap_mf.type contains 'list' -%}{%- assign ap_items = ap_mf.value -%}{%- else -%}{%- assign ap_items = ap_mf.value | split: ';' -%}{%- endif -%}
+{%- if ap_items == blank -%}{%- assign ap_items = section.settings.default_points | split: ';' -%}{%- endif -%}
+<div class="ap-sec color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width ap-narrow">
+    {% render 'ap-sec-head', eyebrow: section.settings.eyebrow, title: section.settings.title %}
+    <div class="ap-card ap-guar">
+      <div class="ap-guar__big">{{ settings.ap_warranty_months }}<small>meses</small></div>
+      <ul>{%- for item in ap_items -%}{%- assign item = item | strip -%}{%- if item != blank -%}<li>{{ item }}</li>{%- endif -%}{%- endfor -%}</ul>
+    </div>
+    {%- if section.settings.link != blank -%}<p class="ap-guar__link"><a href="{{ section.settings.link }}">Ver condiciones de garantía →</a></p>{%- endif -%}
+  </div>
+</div>
+{% schema %}
+{
+  "name": "AP · Garantía",
+  "enabled_on": { "templates": ["product"] },
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Etiqueta", "default": "Garantía" },
+    { "type": "text", "id": "title", "label": "Título", "default": "Compra tranquilo" },
+    { "type": "text", "id": "default_points", "label": "Puntos por defecto (separados por ;)", "default": "Cubre defectos de fábrica;Si falla, gestionamos la devolución;No cubre daños por mal uso" },
+    { "type": "url", "id": "link", "label": "Enlace a condiciones" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Esquema de color", "default": "scheme-2" }
+  ],
+  "presets": [{ "name": "AP · Garantía" }]
+}
+{% endschema %}

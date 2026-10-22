@@ -1,0 +1,34 @@
+{%- comment -%}
+  ap-how-it-works — pasos numerados unidos por una línea naranja.
+  Dato: metacampo artpro.pasos (lista de texto), cada línea "Título | Texto". Vacío = sección oculta.
+{%- endcomment -%}
+{%- assign ap_mf = product.metafields.artpro.pasos -%}
+{%- if ap_mf.type contains 'list' -%}{%- assign ap_items = ap_mf.value -%}{%- else -%}{%- assign ap_items = ap_mf.value | split: ';' -%}{%- endif -%}
+{%- if ap_items != blank -%}
+<div class="ap-sec color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width">
+    {% render 'ap-sec-head', eyebrow: section.settings.eyebrow, title: section.settings.title %}
+    <ol class="ap-steps">
+      {%- for item in ap_items -%}
+        {%- assign p = item | split: '|' -%}
+        <li class="ap-step">
+          <span class="ap-step__n">{{ forloop.index }}</span>
+          <div><h3>{{ p[0] | strip }}</h3>{%- if p[1] -%}<p>{{ p[1] | strip }}</p>{%- endif -%}</div>
+        </li>
+      {%- endfor -%}
+    </ol>
+  </div>
+</div>
+{%- endif -%}
+{% schema %}
+{
+  "name": "AP · Cómo funciona",
+  "enabled_on": { "templates": ["product"] },
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Etiqueta", "default": "Cómo funciona" },
+    { "type": "text", "id": "title", "label": "Título", "default": "Así de fácil se usa" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Esquema de color", "default": "scheme-2" }
+  ],
+  "presets": [{ "name": "AP · Cómo funciona" }]
+}
+{% endschema %}

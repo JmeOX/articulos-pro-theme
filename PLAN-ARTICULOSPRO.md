@@ -33,7 +33,8 @@ Metaobjetos: Dato, Paso, Escenario, Punto, Comparativa, Respaldo, Pregunta. Secc
 - [x] Fase 3: elementos globales (anuncio, header, footer + ap-footer-info, WhatsApp flotante, snippets ap-payment-badges / ap-wa-number)
 - [x] Fase 4a: bloque de compra (bloques ap_* en main-product: paquetes, beneficios, datos clave, WhatsApp, pagos/garantías; carrito tipo drawer)
 - [x] Ajustes 4a: precio ap_price (Ahorras $X), sello artpro.sello (naranja), galería con miniaturas, video en loop artpro.video_loop tras garantías
-- [ ] Fase 4b/4c: secciones de contenido + último llamado + barra fija
+- [x] Fase 4b: secciones ap-how-it-works, ap-scenarios, ap-videos, ap-detail, ap-objection, ap-compare, ap-backing, ap-warranty, ap-faq (metacampos con listas 'A | B | C', no metaobjetos)
+- [ ] Fase 4c: secciones de contenido + último llamado + barra fija
 - Nota: theme dev a veces sube la plantilla antes que la sección nueva → 'touch' a la sección y luego a la plantilla.
 - [ ] Fase 5: carrito lateral
 - [ ] Fase 6: colección, home, páginas informativas, búsqueda, 404

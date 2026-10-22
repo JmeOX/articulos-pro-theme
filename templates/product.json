@@ -116,10 +116,55 @@
         "padding_top": 36,
         "padding_bottom": 28
       }
+    },
+    "ap-how-it-works": {
+      "type": "ap-how-it-works",
+      "settings": {}
+    },
+    "ap-scenarios": {
+      "type": "ap-scenarios",
+      "settings": {}
+    },
+    "ap-videos": {
+      "type": "ap-videos",
+      "settings": {}
+    },
+    "ap-detail": {
+      "type": "ap-detail",
+      "settings": {}
+    },
+    "ap-objection": {
+      "type": "ap-objection",
+      "settings": {}
+    },
+    "ap-compare": {
+      "type": "ap-compare",
+      "settings": {}
+    },
+    "ap-backing": {
+      "type": "ap-backing",
+      "settings": {}
+    },
+    "ap-warranty": {
+      "type": "ap-warranty",
+      "settings": {}
+    },
+    "ap-faq": {
+      "type": "ap-faq",
+      "settings": {}
     }
   },
   "order": [
     "main",
+    "ap-how-it-works",
+    "ap-scenarios",
+    "ap-videos",
+    "ap-detail",
+    "ap-objection",
+    "ap-compare",
+    "ap-backing",
+    "ap-warranty",
+    "ap-faq",
     "disclosures",
     "related-products"
   ]

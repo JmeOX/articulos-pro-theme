@@ -1,0 +1,35 @@
+{%- comment -%}
+  ap-scenarios — tarjetas "situación → solución".
+  Dato: metacampo artpro.escenarios (lista de texto), cada línea "Situación | Detalle | Solución".
+{%- endcomment -%}
+{%- assign ap_mf = product.metafields.artpro.escenarios -%}
+{%- if ap_mf.type contains 'list' -%}{%- assign ap_items = ap_mf.value -%}{%- else -%}{%- assign ap_items = ap_mf.value | split: ';' -%}{%- endif -%}
+{%- if ap_items != blank -%}
+<div class="ap-sec color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width">
+    {% render 'ap-sec-head', eyebrow: section.settings.eyebrow, title: section.settings.title %}
+    <div class="ap-scen">
+      {%- for item in ap_items -%}
+        {%- assign p = item | split: '|' -%}
+        <div class="ap-card ap-scen__card">
+          <h3>{{ p[0] | strip }}</h3>
+          {%- if p[1] -%}<p>{{ p[1] | strip }}</p>{%- endif -%}
+          {%- if p[2] -%}<p class="ap-scen__sol">{{ p[2] | strip }}</p>{%- endif -%}
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+{%- endif -%}
+{% schema %}
+{
+  "name": "AP · Escenarios",
+  "enabled_on": { "templates": ["product"] },
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Etiqueta", "default": "Para qué te sirve" },
+    { "type": "text", "id": "title", "label": "Título", "default": "Cuando más lo vas a necesitar" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Esquema de color", "default": "scheme-1" }
+  ],
+  "presets": [{ "name": "AP · Escenarios" }]
+}
+{% endschema %}

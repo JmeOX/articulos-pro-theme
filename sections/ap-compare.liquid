@@ -1,0 +1,68 @@
+{%- comment -%}
+  ap-compare — comparativa con pestañas sobre la banda negra.
+  Dato: artpro.comparativa (lista de texto), cada línea "Alternativa | Lo malo de ella | Lo bueno nuestro".
+  Las líneas con la misma Alternativa forman una pestaña.
+{%- endcomment -%}
+{%- assign ap_mf = product.metafields.artpro.comparativa -%}
+{%- if ap_mf.type contains 'list' -%}{%- assign ap_items = ap_mf.value -%}{%- else -%}{%- assign ap_items = ap_mf.value | split: ';' -%}{%- endif -%}
+{%- if ap_items != blank -%}
+  {%- liquid
+    assign ap_names = ''
+    for item in ap_items
+      assign n = item | split: '|' | first | strip
+      assign ap_names = ap_names | append: n | append: '¦'
+    endfor
+    assign ap_names = ap_names | split: '¦' | uniq
+    assign ap_ours = section.settings.ours_label | default: product.title
+  -%}
+<div class="ap-sec color-{{ section.settings.color_scheme }} gradient ap-compare" data-ap-compare>
+  <div class="page-width ap-narrow">
+    {% render 'ap-sec-head', eyebrow: section.settings.eyebrow, title: section.settings.title, lead: section.settings.lead %}
+    {%- if ap_names.size > 1 -%}
+      <div class="ap-tabs" role="tablist">
+        {%- for name in ap_names -%}
+          <button type="button" class="ap-tab{% if forloop.first %} is-on{% endif %}" data-tab="{{ forloop.index0 }}" role="tab">{{ name }}</button>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+    <table class="ap-tbl">
+      <thead><tr><th data-alt>{{ ap_names.first }}</th><th>{{ ap_ours }}</th></tr></thead>
+      {%- for name in ap_names -%}
+        <tbody data-pane="{{ forloop.index0 }}"{% unless forloop.first %} hidden{% endunless %}>
+          {%- for item in ap_items -%}
+            {%- assign p = item | split: '|' -%}
+            {%- assign pn = p[0] | strip -%}
+            {%- if pn == name -%}
+              <tr><td class="ap-x">{{ p[1] | strip }}</td><td class="ap-y">{{ p[2] | strip }}</td></tr>
+            {%- endif -%}
+          {%- endfor -%}
+        </tbody>
+      {%- endfor -%}
+    </table>
+  </div>
+</div>
+<script>
+  (() => {
+    const root = document.currentScript.previousElementSibling;
+    root.querySelectorAll('.ap-tab').forEach((t) => t.addEventListener('click', () => {
+      root.querySelectorAll('.ap-tab').forEach((x) => x.classList.toggle('is-on', x === t));
+      root.querySelectorAll('[data-pane]').forEach((p) => { p.hidden = p.dataset.pane !== t.dataset.tab; });
+      root.querySelector('[data-alt]').textContent = t.textContent;
+    }));
+  })();
+</script>
+{%- endif -%}
+{% schema %}
+{
+  "name": "AP · Comparativa",
+  "enabled_on": { "templates": ["product"] },
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Etiqueta", "default": "Comparativa" },
+    { "type": "text", "id": "title", "label": "Título", "default": "Compara antes de decidir" },
+    { "type": "text", "id": "lead", "label": "Subtítulo" },
+    { "type": "text", "id": "ours_label", "label": "Nombre de nuestra columna", "info": "Vacío = nombre del producto" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Esquema de color", "default": "scheme-4" }
+  ],
+  "presets": [{ "name": "AP · Comparativa" }]
+}
+{% endschema %}

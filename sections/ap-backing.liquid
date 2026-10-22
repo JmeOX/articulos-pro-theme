@@ -1,0 +1,45 @@
+{%- comment -%}
+  ap-backing — certificado de respaldo (homologación, certificación, registro).
+  Datos: artpro.respaldo_titulo, artpro.respaldo_texto, artpro.respaldo_datos (lista "Etiqueta: Valor").
+{%- endcomment -%}
+{%- assign ap_t = product.metafields.artpro.respaldo_titulo.value -%}
+{%- assign ap_mf = product.metafields.artpro.respaldo_datos -%}
+{%- if ap_mf.type contains 'list' -%}{%- assign ap_items = ap_mf.value -%}{%- else -%}{%- assign ap_items = ap_mf.value | split: ';' -%}{%- endif -%}
+{%- if ap_t != blank -%}
+<div class="ap-sec color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width ap-narrow">
+    {% render 'ap-sec-head', eyebrow: section.settings.eyebrow, title: section.settings.title %}
+    <div class="ap-cert"><div class="ap-cert__in">
+      {%- if section.settings.badge != blank -%}
+        {{ section.settings.badge | image_url: width: 120 | image_tag: class: 'ap-cert__badge', loading: 'lazy' }}
+      {%- endif -%}
+      <div>
+        <p class="ap-cert__title">{{ ap_t }}</p>
+        {%- assign ap_txt = product.metafields.artpro.respaldo_texto.value -%}
+        {%- if ap_txt != blank -%}<p class="ap-cert__text">{{ ap_txt | newline_to_br }}</p>{%- endif -%}
+      </div>
+      {%- if ap_items != blank -%}
+        <dl class="ap-cert__data">
+          {%- for item in ap_items -%}
+            {%- assign k = item | split: ':' | first -%}
+            <dt>{{ k | strip }}</dt><dd>{{ item | remove_first: k | remove_first: ':' | strip }}</dd>
+          {%- endfor -%}
+        </dl>
+      {%- endif -%}
+    </div></div>
+  </div>
+</div>
+{%- endif -%}
+{% schema %}
+{
+  "name": "AP · Respaldo",
+  "enabled_on": { "templates": ["product"] },
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Etiqueta", "default": "Respaldo" },
+    { "type": "text", "id": "title", "label": "Título", "default": "Legal y probado en Colombia" },
+    { "type": "image_picker", "id": "badge", "label": "Sello o isotipo (opcional)" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Esquema de color", "default": "scheme-1" }
+  ],
+  "presets": [{ "name": "AP · Respaldo" }]
+}
+{% endschema %}

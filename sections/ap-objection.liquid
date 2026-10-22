@@ -1,0 +1,28 @@
+{%- comment -%}
+  ap-objection — la pregunta que más frena la compra, con respuesta destacada.
+  Datos: artpro.objecion_pregunta (texto) y artpro.objecion_respuesta (texto de varias líneas).
+{%- endcomment -%}
+{%- assign ap_q = product.metafields.artpro.objecion_pregunta.value -%}
+{%- assign ap_a = product.metafields.artpro.objecion_respuesta.value -%}
+{%- if ap_q != blank and ap_a != blank -%}
+<div class="ap-sec color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width ap-narrow">
+    {% render 'ap-sec-head', eyebrow: section.settings.eyebrow %}
+    <div class="ap-obj">
+      <p class="ap-obj__q">{{ ap_q }}</p>
+      <p class="ap-obj__a">{{ ap_a | newline_to_br }}</p>
+    </div>
+  </div>
+</div>
+{%- endif -%}
+{% schema %}
+{
+  "name": "AP · Objeción principal",
+  "enabled_on": { "templates": ["product"] },
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Etiqueta", "default": "La pregunta que más nos hacen" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Esquema de color", "default": "scheme-2" }
+  ],
+  "presets": [{ "name": "AP · Objeción principal" }]
+}
+{% endschema %}

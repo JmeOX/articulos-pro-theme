@@ -1,0 +1,39 @@
+{%- comment -%}
+  ap-detail — imagen + lista numerada de funciones.
+  Datos: artpro.detalle_imagen (archivo de imagen) y artpro.detalle_puntos (lista "Título | Texto").
+{%- endcomment -%}
+{%- assign ap_img = product.metafields.artpro.detalle_imagen.value -%}
+{%- assign ap_mf = product.metafields.artpro.detalle_puntos -%}
+{%- if ap_mf.type contains 'list' -%}{%- assign ap_items = ap_mf.value -%}{%- else -%}{%- assign ap_items = ap_mf.value | split: ';' -%}{%- endif -%}
+{%- if ap_items != blank or ap_img != blank -%}
+<div class="ap-sec color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width">
+    {% render 'ap-sec-head', eyebrow: section.settings.eyebrow, title: section.settings.title %}
+    <div class="ap-detail">
+      {%- if ap_img != blank -%}
+        <div class="ap-detail__img">{{ ap_img | image_url: width: 1000 | image_tag: loading: 'lazy', widths: '400, 600, 800, 1000', sizes: '(min-width: 990px) 50vw, 100vw' }}</div>
+      {%- endif -%}
+      {%- if ap_items != blank -%}
+        <ol class="ap-detail__list">
+          {%- for item in ap_items -%}
+            {%- assign p = item | split: '|' -%}
+            <li><span class="ap-num">{{ forloop.index }}</span><span><b>{{ p[0] | strip }}.</b> {{ p[1] | strip }}</span></li>
+          {%- endfor -%}
+        </ol>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+{%- endif -%}
+{% schema %}
+{
+  "name": "AP · Detalle visual",
+  "enabled_on": { "templates": ["product"] },
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Etiqueta", "default": "En detalle" },
+    { "type": "text", "id": "title", "label": "Título", "default": "Todo lo que incluye" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Esquema de color", "default": "scheme-1" }
+  ],
+  "presets": [{ "name": "AP · Detalle visual" }]
+}
+{% endschema %}

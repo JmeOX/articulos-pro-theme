@@ -1,0 +1,7 @@
+{%- comment -%}
+  ap-sec-head — encabezado de sección: etiqueta naranja + título (+ subtítulo opcional).
+  Uso: {% render 'ap-sec-head', eyebrow: section.settings.eyebrow, title: section.settings.title, lead: section.settings.lead %}
+{%- endcomment -%}
+{%- if eyebrow != blank -%}<p class="ap-eyebrow">{{ eyebrow }}</p>{%- endif -%}
+{%- if title != blank -%}<h2 class="ap-sec__title">{{ title }}</h2>{%- endif -%}
+{%- if lead != blank -%}<p class="ap-sec__lead">{{ lead }}</p>{%- endif -%}
