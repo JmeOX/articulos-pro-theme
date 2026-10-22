@@ -490,7 +490,7 @@
                 {%- when 'ap_loop_video' -%}
                   {% render 'ap-loop-video', product: product %}
                 {%- when 'ap_pack_picker' -%}
-                  {% render 'ap-pack-picker', product: product %}
+                  {% render 'ap-pack-picker', product: product, block: block %}
                 {%- when 'ap_benefits' -%}
                   {% render 'ap-benefits', product: product %}
                 {%- when 'ap_specs' -%}
@@ -776,7 +776,7 @@
     { "type": "ap_rating", "name": "AP · Estrellas", "limit": 1 },
     { "type": "ap_price", "name": "AP · Precio", "limit": 1 },
     { "type": "ap_loop_video", "name": "AP · Video en loop", "limit": 1 },
-    { "type": "ap_pack_picker", "name": "AP · Paquetes", "limit": 1 },
+    { "type": "ap_pack_picker", "name": "AP · Paquetes", "limit": 1, "settings": [ { "type": "range", "id": "highlight", "label": "Paquete destacado (0 = ninguno)", "min": 0, "max": 3, "step": 1, "default": 2 }, { "type": "text", "id": "highlight_label", "label": "Texto de la etiqueta", "default": "Más elegido" } ] },
     { "type": "ap_benefits", "name": "AP · Beneficios", "limit": 1 },
     { "type": "ap_specs", "name": "AP · Datos clave", "limit": 1 },
     { "type": "ap_whatsapp", "name": "AP · Botón WhatsApp", "limit": 1 },

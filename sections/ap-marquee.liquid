@@ -1,0 +1,29 @@
+{%- comment -%}
+  ap-marquee — cinta con texto en movimiento.
+  Estilo "recta": franja negra (reemplaza la barra de anuncio). Estilo "diagonal": franja naranja inclinada entre secciones.
+  Textos: separados por ; en la configuración de la sección. Se pausa al pasar el mouse.
+  Si la animación está apagada (Configuración del tema → Artículos Pro · Animaciones) la cinta queda quieta.
+{%- endcomment -%}
+{%- assign ap_items = section.settings.items | split: ';' -%}
+<div class="ap-marquee ap-marquee--{{ section.settings.style }}" style="--ap-mq-speed: {{ section.settings.speed }}s;" role="region" aria-label="{{ section.settings.items | replace: ';', ' · ' | escape }}">
+  <div class="ap-marquee__band">
+    <div class="ap-marquee__track" aria-hidden="true">
+      {%- for n in (1..2) -%}
+        {%- for item in ap_items -%}{%- assign t = item | strip -%}{%- if t != blank -%}<span>{{ t }}</span>{%- endif -%}{%- endfor -%}
+        {%- for item in ap_items -%}{%- assign t = item | strip -%}{%- if t != blank -%}<span>{{ t }}</span>{%- endif -%}{%- endfor -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "AP · Cinta en movimiento",
+  "settings": [
+    { "type": "select", "id": "style", "label": "Estilo", "default": "straight", "options": [
+      { "value": "straight", "label": "Recta (negra)" }, { "value": "diagonal", "label": "Diagonal (naranja)" } ] },
+    { "type": "text", "id": "items", "label": "Textos (separados por ;)", "default": "Envío gratis a toda Colombia;Llega en 3 a 7 días hábiles;Garantía de 3 meses;Paga con Mercado Pago o tarjeta;Soporte por WhatsApp" },
+    { "type": "range", "id": "speed", "label": "Duración de una vuelta (segundos)", "min": 10, "max": 60, "step": 2, "default": 26 }
+  ],
+  "presets": [{ "name": "AP · Cinta en movimiento" }]
+}
+{% endschema %}

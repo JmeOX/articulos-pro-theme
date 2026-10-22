@@ -194,10 +194,19 @@
       "settings": {
         "color_scheme": "scheme-2"
       }
+    },
+    "ribbon": {
+      "type": "ap-marquee",
+      "settings": {
+        "style": "diagonal",
+        "items": "Productos que sirven;Explicados claro;Envío gratis;Garantía 3 meses",
+        "speed": 20
+      }
     }
   },
   "order": [
     "hero",
+    "ribbon",
     "trust",
     "cats",
     "featured",

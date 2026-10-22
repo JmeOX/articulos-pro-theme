@@ -1,0 +1,113 @@
+/* ap-anim.css — animaciones de Artículos Pro. Cada bloque depende de una clase ap-a-* en <body>. */
+
+/* ===== 1. Cinta en movimiento ===== */
+.ap-marquee__band { overflow: hidden; white-space: nowrap; }
+.ap-marquee__track { display: inline-flex; will-change: transform; }
+.ap-marquee__track span { display: inline-flex; align-items: center; gap: 1.4rem; padding-right: 1.4rem; }
+.ap-marquee__track span::after { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--ap-orange); }
+.ap-marquee--straight .ap-marquee__band { background: var(--ap-ink); color: #fff; font-weight: 700; font-size: 1.3rem; padding: 1rem 0; }
+.ap-marquee--diagonal { position: relative; height: 11rem; overflow: hidden; background: var(--ap-surface-alt); }
+.ap-marquee--diagonal .ap-marquee__band { position: absolute; left: -5%; width: 110%; top: 3rem; transform: rotate(-3deg); background: var(--ap-orange); color: var(--ap-on-brand); font-weight: 800; font-size: 1.8rem; letter-spacing: 0.02em; text-transform: uppercase; padding: 1.2rem 0; box-shadow: 0 6px 0 var(--ap-ink); }
+.ap-marquee--diagonal .ap-marquee__track span::after { background: var(--ap-ink); }
+.ap-a-marquee .ap-marquee__track { animation: ap-marquee var(--ap-mq-speed, 26s) linear infinite; }
+.ap-a-marquee .ap-marquee--diagonal .ap-marquee__track { animation-direction: reverse; }
+.ap-marquee:hover .ap-marquee__track { animation-play-state: paused; }
+@keyframes ap-marquee { to { transform: translateX(-50%); } }
+
+/* ===== 2. Imagen del hero que flota ===== */
+.ap-a-float .ap-hero__media img { animation: ap-float 5s ease-in-out infinite; }
+@keyframes ap-float { 50% { transform: translateY(-10px); } }
+
+/* ===== 3. Etiqueta "Ahorras" con rebote al cargar ===== */
+.ap-a-pop .ap-price__save { animation: ap-pop 0.6s cubic-bezier(.3, 1.6, .5, 1) 0.4s both; }
+@keyframes ap-pop { 0% { transform: scale(0) rotate(-12deg); } 100% { transform: none; } }
+
+/* ===== 4. Botones: brillo + levantarse al pasar el mouse ===== */
+.ap-btn--primary, .product-form__submit, .cart__checkout-button { position: relative; overflow: hidden; }
+.ap-a-shine .ap-btn--primary::after,
+.ap-a-shine .product-form__submit:not([disabled])::after,
+.ap-a-shine .cart__checkout-button:not([disabled])::after {
+  content: ""; position: absolute; top: 0; left: -60%; width: 40%; height: 100%; pointer-events: none;
+  background: linear-gradient(100deg, transparent, rgba(255,255,255,.55), transparent); transform: skewX(-20deg);
+  animation: ap-shine 3.2s ease-in-out infinite;
+}
+@keyframes ap-shine { 0%, 60% { left: -60%; } 100% { left: 130%; } }
+.ap-a-shine .ap-btn, .ap-a-shine .product-form__submit { transition: transform .15s, box-shadow .15s; }
+.ap-a-shine .ap-btn--primary:hover, .ap-a-shine .product-form__submit:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(237,122,7,.35); }
+.ap-a-shine .ap-btn:active, .ap-a-shine .product-form__submit:active { transform: translateY(1px) scale(.98); }
+
+/* ===== 4b. Empujoncito en el botón principal del producto ===== */
+.ap-a-nudge product-form .product-form__submit:not([disabled]) { animation: ap-nudge 5s ease-in-out infinite; }
+@keyframes ap-nudge { 0%, 88%, 100% { transform: none; } 91% { transform: translateX(-4px) rotate(-1deg); } 94% { transform: translateX(4px) rotate(1deg); } 97% { transform: translateX(-2px); } }
+
+/* ===== 5. Aparecer al bajar ===== */
+.ap-a-reveal .ap-reveal { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
+.ap-a-reveal .ap-reveal.is-in { opacity: 1; transform: none; }
+.ap-a-reveal .ap-stagger > * { opacity: 0; transform: translateY(18px); transition: opacity .5s ease, transform .5s ease; }
+.ap-a-reveal .ap-stagger.is-in > * { opacity: 1; transform: none; }
+.ap-a-reveal .ap-stagger.is-in > *:nth-child(2) { transition-delay: .12s; }
+.ap-a-reveal .ap-stagger.is-in > *:nth-child(3) { transition-delay: .24s; }
+.ap-a-reveal .ap-stagger.is-in > *:nth-child(4) { transition-delay: .36s; }
+.ap-a-reveal .ap-stagger.is-in > *:nth-child(n+5) { transition-delay: .48s; }
+
+/* ===== 6. Íconos de la franja de confianza que se dibujan ===== */
+.ap-a-icons .ap-trust4.is-in .ap-ic > * { stroke-dasharray: 80; stroke-dashoffset: 80; animation: ap-draw 1.2s ease forwards; }
+.ap-a-icons .ap-trust4.is-in .ap-trust4__item:nth-child(2) .ap-ic > * { animation-delay: .15s; }
+.ap-a-icons .ap-trust4.is-in .ap-trust4__item:nth-child(3) .ap-ic > * { animation-delay: .3s; }
+.ap-a-icons .ap-trust4.is-in .ap-trust4__item:nth-child(4) .ap-ic > * { animation-delay: .45s; }
+@keyframes ap-draw { to { stroke-dashoffset: 0; } }
+
+/* ===== 7. Línea de "Cómo funciona" que se dibuja ===== */
+.ap-a-steps .ap-step:not(:last-child)::after { transform: scaleY(0); transform-origin: top; }
+.ap-a-steps .ap-steps.is-in .ap-step:not(:last-child)::after { transform: none; transition: transform .7s ease; }
+.ap-a-steps .ap-steps.is-in .ap-step:nth-child(2)::after { transition-delay: .7s; }
+.ap-a-steps .ap-steps.is-in .ap-step__n { animation: ap-lit .4s ease forwards; }
+.ap-a-steps .ap-steps.is-in .ap-step:nth-child(2) .ap-step__n { animation-delay: .7s; }
+.ap-a-steps .ap-steps.is-in .ap-step:nth-child(3) .ap-step__n { animation-delay: 1.4s; }
+.ap-a-steps .ap-steps.is-in .ap-step:nth-child(4) .ap-step__n { animation-delay: 2.1s; }
+@keyframes ap-lit { to { background: var(--ap-orange); } }
+@media (min-width: 750px) {
+  .ap-a-steps .ap-step:not(:last-child)::after { transform: scaleX(0); transform-origin: left; }
+}
+
+/* ===== 8. Ícono del carrito que rebota ===== */
+.ap-a-cart #cart-icon-bubble.ap-bump { animation: ap-bump .5s cubic-bezier(.3, 1.6, .5, 1); }
+@keyframes ap-bump { 30% { transform: scale(1.3) rotate(-8deg); } 60% { transform: scale(.92); } 100% { transform: none; } }
+
+/* ===== 9. Sello con texto en círculo (gira si está activo) ===== */
+.ap-seal .ap-seal__ring { position: absolute; inset: 0; width: 100%; height: 100%; }
+.ap-seal .ap-seal__ring text { font: 800 8.5px var(--ap-font); letter-spacing: 1.6px; fill: currentColor; }
+.ap-seal .ap-seal__center { font-size: 1.7rem; font-weight: 800; letter-spacing: 0; text-transform: none; }
+.ap-a-seal .ap-seal .ap-seal__ring { animation: ap-spin 14s linear infinite; }
+@keyframes ap-spin { to { transform: rotate(360deg); } }
+
+/* ===== 10. Paquetes: la tarjeta elegida "late" y la etiqueta se mueve ===== */
+.ap-pack__tag { display: inline-block; margin-left: 0.6rem; background: var(--ap-ink); color: #fff; font-size: 0.9rem; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase; padding: 0.2rem 0.6rem; border-radius: var(--ap-radius-sm); vertical-align: middle; }
+.ap-a-packs .ap-pack__opt.is-on { animation: ap-select .35s cubic-bezier(.3, 1.6, .5, 1); }
+.ap-a-packs .ap-pack__tag { animation: ap-wiggle 2.6s ease-in-out infinite; }
+@keyframes ap-select { 40% { transform: scale(1.025); } }
+@keyframes ap-wiggle { 0%, 80%, 100% { transform: none; } 85% { transform: rotate(-4deg); } 90% { transform: rotate(4deg); } 95% { transform: rotate(-2deg); } }
+
+/* ===== 11. Precio que cuenta: lo hace ap-anim.js; números de ancho fijo para que no salten ===== */
+.ap-price__now { font-variant-numeric: tabular-nums; }
+
+/* ===== 12. Comparativa: los ✓ aparecen en cascada ===== */
+.ap-a-compare .ap-tbl.is-in tbody:not([hidden]) tr td.ap-y { opacity: 0; animation: ap-slidein .45s ease forwards; }
+.ap-a-compare .ap-tbl.is-in tbody:not([hidden]) tr:nth-child(2) td.ap-y { animation-delay: .2s; }
+.ap-a-compare .ap-tbl.is-in tbody:not([hidden]) tr:nth-child(3) td.ap-y { animation-delay: .4s; }
+.ap-a-compare .ap-tbl.is-in tbody:not([hidden]) tr:nth-child(n+4) td.ap-y { animation-delay: .6s; }
+@keyframes ap-slidein { from { opacity: 0; transform: translateX(-12px); } to { opacity: 1; transform: none; } }
+
+/* ===== 13. WhatsApp: pulso + mensaje ===== */
+.ap-a-wa .ap-wa-float::before { content: ""; position: absolute; inset: 0; border-radius: 50%; background: #25D366; z-index: -1; animation: ap-ring 2.4s ease-out infinite; }
+@keyframes ap-ring { 0% { transform: scale(1); opacity: .6; } 100% { transform: scale(1.7); opacity: 0; } }
+.ap-wa-tip { position: fixed; right: 84px; bottom: calc(30px + env(safe-area-inset-bottom, 0px)); z-index: 30; background: var(--ap-surface); color: var(--ap-ink); border: 1px solid var(--ap-line); box-shadow: 0 4px 18px rgba(17,17,17,.12); border-radius: var(--ap-radius-lg); padding: 1rem 1.4rem; font-size: 1.3rem; font-weight: 600; opacity: 0; transform: translateX(10px); transition: opacity .4s, transform .4s; pointer-events: none; }
+.ap-wa-tip.is-on { opacity: 1; transform: none; }
+body.ap-sticky-on .ap-wa-tip { bottom: calc(106px + env(safe-area-inset-bottom, 0px)); }
+
+/* ===== Accesibilidad: sin movimiento si el cliente lo pide ===== */
+@media (prefers-reduced-motion: reduce) {
+  .ap-marquee__track, .ap-hero__media img, .ap-price__save, .ap-btn, .product-form__submit, .ap-seal__ring, .ap-pack__opt, .ap-pack__tag, .ap-wa-float::before { animation: none !important; }
+  .ap-btn--primary::after, .product-form__submit::after, .cart__checkout-button::after { display: none !important; }
+  .ap-reveal, .ap-stagger > * { opacity: 1 !important; transform: none !important; }
+}

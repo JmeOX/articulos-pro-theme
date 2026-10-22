@@ -14,4 +14,5 @@
   <a class="ap-wa-float" href="https://wa.me/{{ ap_wa_number }}?text={{ ap_wa_text | url_encode }}" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">
     <svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.6-1.2A9 9 0 1 0 12 3z" fill="none" stroke="#fff" stroke-width="2"/></svg>
   </a>
+  {%- if settings.ap_anim_wa and settings.ap_anim_wa_text != blank -%}<span class="ap-wa-tip" aria-hidden="true">{{ settings.ap_anim_wa_text }}</span>{%- endif -%}
 {%- endif -%}

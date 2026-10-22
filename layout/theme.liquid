@@ -286,6 +286,8 @@
     {{ 'ap-tokens.css' | asset_url | stylesheet_tag }}
     {{ 'ap-global.css' | asset_url | stylesheet_tag }}
     <script src="{{ 'ap-cart.js' | asset_url }}" defer="defer"></script>
+    {{ 'ap-anim.css' | asset_url | stylesheet_tag }}
+    <script src="{{ 'ap-anim.js' | asset_url }}" defer="defer"></script>
     <link rel="stylesheet" href="{{ 'component-cart-items.css' | asset_url }}" media="print" onload="this.media='all'">
 
     {%- if settings.cart_type == 'drawer' -%}
@@ -328,7 +330,7 @@
     </script>
   </head>
 
-  <body class="gradient{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}">
+  <body class="gradient{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}{% if settings.ap_anim_marquee %} ap-a-marquee{% endif %}{% if settings.ap_anim_float %} ap-a-float{% endif %}{% if settings.ap_anim_pop %} ap-a-pop{% endif %}{% if settings.ap_anim_shine %} ap-a-shine{% endif %}{% if settings.ap_anim_nudge %} ap-a-nudge{% endif %}{% if settings.ap_anim_reveal %} ap-a-reveal{% endif %}{% if settings.ap_anim_icons %} ap-a-icons{% endif %}{% if settings.ap_anim_steps %} ap-a-steps{% endif %}{% if settings.ap_anim_cart %} ap-a-cart{% endif %}{% if settings.ap_anim_seal %} ap-a-seal{% endif %}{% if settings.ap_anim_packs %} ap-a-packs{% endif %}{% if settings.ap_anim_price %} ap-a-price{% endif %}{% if settings.ap_anim_compare %} ap-a-compare{% endif %}{% if settings.ap_anim_wa %} ap-a-wa{% endif %}">
     <a class="skip-to-content-link button visually-hidden" href="#MainContent">
       {{ 'accessibility.skip_to_text' | t }}
     </a>

@@ -1,14 +1,23 @@
 {%- comment -%}
-  ap-seal — sello circular sobre la foto principal (ej. "Homologado CRC").
-  Dato: metacampo artpro.sello (texto de una línea). Vacío = no se muestra.
-  Escribe el texto con | para partirlo en líneas: "Homologado|CRC|Colombia" (la del medio va grande).
+  ap-seal — sello circular sobre la foto principal.
+  Dato: metacampo artpro.sello, formato "Arriba|CENTRO|Abajo" (ej: "Homologado|CRC|Colombia").
+  El centro va en grande; las otras partes giran alrededor en un círculo (si la animación está activa).
 {%- endcomment -%}
 {%- assign ap_seal = product.metafields.artpro.sello.value -%}
 {%- if ap_seal != blank -%}
   {%- assign ap_lines = ap_seal | split: '|' -%}
+  {%- if ap_lines.size >= 3 -%}
+    {%- assign ap_center = ap_lines[1] | strip -%}
+    {%- capture ap_ring -%}{{ ap_lines[0] | strip | upcase }} · {{ ap_lines[2] | strip | upcase }} · {%- endcapture -%}
+  {%- else -%}
+    {%- assign ap_center = ap_lines[0] | strip -%}
+    {%- capture ap_ring -%}{{ ap_lines[1] | strip | upcase }} · {%- endcapture -%}
+  {%- endif -%}
   <div class="ap-seal" aria-label="{{ ap_lines | join: ' ' | escape }}">
-    {%- for line in ap_lines -%}
-      {%- if ap_lines.size == 3 and forloop.index == 2 -%}<b>{{ line | strip }}</b>{%- else -%}<span>{{ line | strip }}</span>{%- endif -%}
-    {%- endfor -%}
+    <svg class="ap-seal__ring" viewBox="0 0 100 100" aria-hidden="true" focusable="false">
+      <defs><path id="ApSealPath-{{ product.id }}" d="M50,50 m-37,0 a37,37 0 1,1 74,0 a37,37 0 1,1 -74,0"/></defs>
+      <text><textPath href="#ApSealPath-{{ product.id }}">{{ ap_ring }}{{ ap_ring }}</textPath></text>
+    </svg>
+    <b class="ap-seal__center">{{ ap_center }}</b>
   </div>
 {%- endif -%}

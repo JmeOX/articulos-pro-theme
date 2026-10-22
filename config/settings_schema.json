@@ -1583,5 +1583,104 @@
         "default": true
       }
     ]
+  },
+  {
+    "name": "Artículos Pro · Animaciones",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Activa o apaga cada animación. Si el cliente tiene 'reducir movimiento' en su dispositivo, se apagan solas."
+      },
+      {
+        "type": "checkbox",
+        "id": "ap_anim_marquee",
+        "label": "1 · Cintas en movimiento",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "ap_anim_float",
+        "label": "2 · Imagen del home que flota",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "ap_anim_pop",
+        "label": "3 · Etiqueta de ahorro con rebote",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "ap_anim_shine",
+        "label": "4 · Brillo y movimiento en botones",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "ap_anim_nudge",
+        "label": "4b · Empujoncito en el botón de compra",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "ap_anim_reveal",
+        "label": "5 · Secciones que aparecen al bajar",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "ap_anim_icons",
+        "label": "6 · Íconos que se dibujan",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "ap_anim_steps",
+        "label": "7 · Línea de 'Cómo funciona'",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "ap_anim_cart",
+        "label": "8 · Ícono del carrito que rebota",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "ap_anim_seal",
+        "label": "9 · Sello que gira",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "ap_anim_packs",
+        "label": "10 · Paquetes con movimiento",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "ap_anim_price",
+        "label": "11 · Precio que cuenta",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "ap_anim_compare",
+        "label": "12 · Comparativa en cascada",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "ap_anim_wa",
+        "label": "13 · WhatsApp con pulso y mensaje",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "ap_anim_wa_text",
+        "label": "Mensaje junto a WhatsApp",
+        "default": "¿Dudas? Escríbenos"
+      }
+    ]
   }
 ]

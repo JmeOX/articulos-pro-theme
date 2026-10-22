@@ -14,7 +14,7 @@
         data-value="{{ variant.option1 | escape }}"
         {% unless variant.available %}disabled{% endunless %}>
         <span class="ap-pack__radio" aria-hidden="true"></span>
-        <span class="ap-pack__name">{{ variant.option1 }}{% unless variant.available %} · Agotado{% endunless %}</span>
+        <span class="ap-pack__name">{{ variant.option1 }}{% unless variant.available %} · Agotado{% endunless %}{% if block.settings.highlight == forloop.index and block.settings.highlight_label != blank %}<span class="ap-pack__tag">{{ block.settings.highlight_label }}</span>{% endif %}</span>
         <span class="ap-pack__price">
           {{ variant.price | money_without_trailing_zeros }}
           {%- if variant.compare_at_price > variant.price -%}

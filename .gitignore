@@ -1,0 +1,5 @@
+# Carpeta de archivos generados por Claude
+Claude outputs/
+
+# Documentos de trabajo (plan, prompts, notas): no van al repositorio
+*.md
