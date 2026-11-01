@@ -129,7 +129,8 @@
     "cart_drawer_collection": "",
     "cart_color_scheme": "scheme-1",
     "customer_account_menu": "customer-account-main-menu",
-    "ap_whatsapp_number": "3007980459",
+    "ap_whatsapp_number": "3232379172",
+    "ap_trust_1_text": "Gratis · 3–7 días",
     "ap_pay_addi": false,
     "sections": {
       "main-password-header": {
@@ -216,8 +217,7 @@
           "shadow": "#111111"
         }
       }
-    },
-    "ap_trust_1_text": "Gratis · 3–7 días"
+    }
   },
   "presets": {
     "Dawn": {

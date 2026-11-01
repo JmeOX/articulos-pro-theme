@@ -59,7 +59,7 @@
           "settings": {
             "icon": "card",
             "title": "Pago seguro",
-            "text": "Mercado Pago o tarjeta"
+            "text": "Mercado Pago, tarjeta o contraentrega"
           }
         },
         "t3": {
@@ -67,7 +67,7 @@
           "settings": {
             "icon": "shield",
             "title": "Garantía",
-            "text": "3 meses"
+            "text": "1 mes"
           }
         },
         "t4": {

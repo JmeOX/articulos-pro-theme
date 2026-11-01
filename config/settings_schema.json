@@ -1505,7 +1505,7 @@
         "type": "number",
         "id": "ap_warranty_months",
         "label": "Meses de garantía por defecto",
-        "default": 3,
+        "default": 1,
         "info": "Se usa cuando el producto no tiene su propia garantía."
       },
       {
@@ -1546,7 +1546,7 @@
         "type": "text",
         "id": "ap_trust_3_text",
         "label": "Elemento 3: texto",
-        "default": "3 meses"
+        "default": "1 mes"
       },
       {
         "type": "header",
@@ -1580,6 +1580,12 @@
         "type": "checkbox",
         "id": "ap_pay_transfer",
         "label": "Transferencia (WhatsApp)",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "ap_pay_cod",
+        "label": "Contraentrega",
         "default": true
       }
     ]

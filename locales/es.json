@@ -548,5 +548,13 @@
       "expanded": "Formulario del destinatario de la tarjeta de regalo expandido",
       "collapsed": "Formulario del destinatario de tarjeta de regalo contraído"
     }
+  },
+  "shopify": {
+    "checkout": {
+      "contact": {
+        "company_label": "Documento",
+        "optional_company_label": "Documneto ( Opcional )"
+      }
+    }
   }
 }

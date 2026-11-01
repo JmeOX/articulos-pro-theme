@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -18,7 +27,7 @@
           "type": "q",
           "settings": {
             "question": "¿Cómo puedo pagar?",
-            "answer": "Con Mercado Pago, tarjeta de crédito, o por transferencia coordinada por WhatsApp."
+            "answer": "Con Mercado Pago, tarjeta de crédito, pago contraentrega o transferencia coordinada por WhatsApp."
           }
         },
         "q3": {
@@ -32,7 +41,7 @@
           "type": "q",
           "settings": {
             "question": "¿Qué garantía tienen los productos?",
-            "answer": "3 meses. Si el producto falla, gestionamos la devolución según nuestra política de garantía. No cubre daños por mal uso."
+            "answer": "1 mes. Si el producto falla, gestionamos la devolución según nuestra política de garantía. No cubre daños por mal uso."
           }
         }
       },

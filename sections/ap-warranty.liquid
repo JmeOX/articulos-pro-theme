@@ -10,7 +10,7 @@
   <div class="page-width ap-narrow">
     {% render 'ap-sec-head', eyebrow: section.settings.eyebrow, title: section.settings.title %}
     <div class="ap-card ap-guar">
-      <div class="ap-guar__big">{{ settings.ap_warranty_months }}<small>meses</small></div>
+      <div class="ap-guar__big">{{ settings.ap_warranty_months }}<small>{% if settings.ap_warranty_months == 1 %}mes{% else %}meses{% endif %}</small></div>
       <ul>{%- for item in ap_items -%}{%- assign item = item | strip -%}{%- if item != blank -%}<li>{{ item }}</li>{%- endif -%}{%- endfor -%}</ul>
     </div>
     {%- if section.settings.link != blank -%}<p class="ap-guar__link"><a href="{{ section.settings.link }}">Ver condiciones de garantía →</a></p>{%- endif -%}

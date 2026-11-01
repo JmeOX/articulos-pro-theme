@@ -12,8 +12,24 @@
     "hero": {
       "type": "ap-hero-product",
       "settings": {
-        "product": "gps-para-mascotas",
-        "minis": "Envío gratis;Garantía 3 meses;Pago seguro"
+        "product": "esfera-voladora",
+        "image": "shopify://shop_images/foto1_sin_textos_7b6694cf-211d-4b94-a93d-c84702d73afa.jpg",
+        "eyebrow": "Producto estrella",
+        "heading": "Esfera voladora inteligente: lánzala y vuelve hacia ti",
+        "text": "Una esfera voladora de 10 cm para jugar al aire libre, sin pantallas. La enciendes con su control, la lanzas al aire y vuelve hacia ti.",
+        "button_1": "Ver el producto",
+        "button_2": "Ver productos",
+        "button_2_link": "shopify://collections/all",
+        "minis": "Envío gratis;Garantía 1 mes;Pago seguro",
+        "color_scheme": ""
+      }
+    },
+    "ribbon": {
+      "type": "ap-marquee",
+      "settings": {
+        "style": "diagonal",
+        "items": "Productos que sirven;Envío gratis;Garantía 1 mes",
+        "speed": 20
       }
     },
     "trust": {
@@ -32,7 +48,7 @@
           "settings": {
             "icon": "card",
             "title": "Pago seguro",
-            "text": "Mercado Pago o tarjeta"
+            "text": "Mercado Pago, tarjeta o contraentrega"
           }
         },
         "t3": {
@@ -40,7 +56,7 @@
           "settings": {
             "icon": "shield",
             "title": "Garantía",
-            "text": "3 meses en todos los productos"
+            "text": "1 mes en todos los productos"
           }
         },
         "t4": {
@@ -58,7 +74,9 @@
         "t3",
         "t4"
       ],
-      "settings": {}
+      "settings": {
+        "color_scheme": ""
+      }
     },
     "cats": {
       "type": "ap-categories",
@@ -87,20 +105,32 @@
         "c2",
         "c3"
       ],
-      "settings": {}
+      "settings": {
+        "eyebrow": "Categorías",
+        "title": "¿Qué estás buscando?",
+        "color_scheme": ""
+      }
     },
     "featured": {
       "type": "ap-featured",
       "settings": {
-        "collection": "frontpage"
+        "collection": "frontpage",
+        "limit": 4,
+        "eyebrow": "Destacados",
+        "title": "Los más elegidos",
+        "button": "Ver todos los productos",
+        "button_link": "shopify://collections/all",
+        "color_scheme": ""
       }
     },
     "star": {
       "type": "ap-star-band",
       "settings": {
         "product": "gps-para-mascotas",
+        "eyebrow": "El favorito",
         "text": "Para que nunca más tengas que salir a buscarlo sin saber dónde está.",
-        "button": "Conocer el GPS"
+        "button": "Conocer el GPS",
+        "color_scheme": ""
       }
     },
     "why": {
@@ -111,7 +141,7 @@
           "settings": {
             "icon": "shield",
             "title": "Calidad garantizada",
-            "text": "3 meses de garantía. Si tu producto falla, te respondemos."
+            "text": "1 mes de garantía. Si tu producto falla, te respondemos."
           }
         },
         "w2": {
@@ -145,7 +175,11 @@
         "w3",
         "w4"
       ],
-      "settings": {}
+      "settings": {
+        "eyebrow": "Por qué Artículos Pro",
+        "title": "Compras con respaldo",
+        "color_scheme": ""
+      }
     },
     "faq": {
       "type": "ap-faq-general",
@@ -161,7 +195,7 @@
           "type": "q",
           "settings": {
             "question": "¿Cómo puedo pagar?",
-            "answer": "Con Mercado Pago, tarjeta de crédito, o por transferencia coordinada por WhatsApp."
+            "answer": "Con Mercado Pago, tarjeta de crédito, pago contraentrega o transferencia coordinada por WhatsApp."
           }
         },
         "q3": {
@@ -175,7 +209,7 @@
           "type": "q",
           "settings": {
             "question": "¿Qué garantía tienen los productos?",
-            "answer": "3 meses. Si el producto falla, gestionamos la devolución según nuestra política de garantía. No cubre daños por mal uso."
+            "answer": "1 mes. Si el producto falla, gestionamos la devolución según nuestra política de garantía. No cubre daños por mal uso."
           }
         }
       },
@@ -186,21 +220,17 @@
         "q4"
       ],
       "settings": {
+        "eyebrow": "Preguntas frecuentes",
+        "title": "Antes de comprar",
         "color_scheme": "scheme-2"
       }
     },
     "wa": {
       "type": "ap-wa-cta",
       "settings": {
+        "title": "¿Tienes dudas? Te asesoramos por WhatsApp",
+        "button": "Escribir por WhatsApp",
         "color_scheme": "scheme-2"
-      }
-    },
-    "ribbon": {
-      "type": "ap-marquee",
-      "settings": {
-        "style": "diagonal",
-        "items": "Productos que sirven;Explicados claro;Envío gratis;Garantía 3 meses",
-        "speed": 20
       }
     }
   },
