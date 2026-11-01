@@ -1682,6 +1682,12 @@
         "default": true
       },
       {
+        "type": "checkbox",
+        "id": "ap_anim_scroll",
+        "label": "14. Indicador \"Desliza para ver más\" en el producto",
+        "default": true
+      },
+      {
         "type": "text",
         "id": "ap_anim_wa_text",
         "label": "Mensaje junto a WhatsApp",
